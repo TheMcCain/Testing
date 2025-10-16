@@ -1,3 +1,230 @@
+document.head.innerHTML += `
+<style>
+  @keyframes fadeInScale {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes hologlow {
+    0% {
+      box-shadow: 0 0 8px rgba(174, 234, 255, 0.4),
+                  0 0 20px rgba(174, 234, 255, 0.2);
+    }
+    100% {
+      box-shadow: 0 0 16px rgba(174, 234, 255, 0.7),
+                  0 0 40px rgba(174, 234, 255, 0.4);
+    }
+  }
+
+  .overlay_window {
+    animation: fadeInScale 0.3s cubic-bezier(0.3, 1.2, 0.2, 1) forwards,
+               gradientShift 30s ease infinite,
+               hologlow 1s ease-in-out infinite alternate;
+    opacity: 0;
+    background: linear-gradient(135deg, #1a1a1a, #222222, #2e2e2e);
+    background-size: 300% 300%;
+    border-radius: 0.7rem;
+    box-shadow:
+      0 0 1.2em rgba(174, 234, 255, 0.4),
+      0 0 2.5em rgba(174, 234, 255, 0.2);
+    display: flex;
+    flex-flow: column;
+    color: #e6faff;
+    padding: 1.5em;
+  }
+
+  .overlay_window h3 {
+    margin: 0;
+    padding: 0.6em 1em;
+    font-size: 1.4em;
+    background: #1a1a1a;
+    border-radius: 0.7rem 0.7rem 0 0;
+    color: #f0f0f0;
+    text-shadow: 0 0 6px rgba(174, 234, 255, 0.5);
+  }
+
+  .overlay_window p {
+    margin: 0.7em 0 0 0;
+    line-height: 1.5em;
+    color: #f5faff;
+  }
+</style>
+`;
+
+document.head.innerHTML += `<link
+ rel="stylesheet"
+ href="https://unpkg.com/xp.css"
+>`
+document.head.innerHTML += `<style>
+#announcement {
+  display: none;
+}
+.campaign_trail_start_emphasis {
+  background-color: #F8F8F8;
+}
+.game_header {
+    background: linear-gradient(to bottom, #828387, #A0A1A5, #D9DBE0);
+    height: 50px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+.game_header h2 {
+    font-size: 32px;
+    font-weight: bold;
+    font-family: Tahoma, Arial, sans-serif;
+    
+    background: linear-gradient(to bottom, #ffffff, #d0e4f7);
+    -webkit-background-clip: text;
+    /* Removed -webkit-text-fill-color: #ffffff; */
+
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+}
+.answer_select_button {
+  font-weight: normal !important;      /* Removes bold */
+  text-transform: lowercase !important; /* Makes all text lowercase */
+}
+
+.answer_select_button::first-letter {
+  text-transform: uppercase !important; /* Capitalizes only the first letter */
+}
+
+#overall_details_container.done h4 {
+    font-size: 14px !important;
+}
+
+
+
+.inner_inner_window h3 {
+  background-color: #E8EFFF;
+  background: linear-gradient(to bottom, #C1C7E5, #CCD1E8, #E2E5F0);
+}
+
+#closeButton {
+        background: none;
+        border: none;
+        outline: none;
+        padding: 0;
+        cursor: pointer;
+    }
+
+/* Override xp.css focus and hover styles */
+#closeButton:focus,
+#closeButton:active,
+#closeButton:hover {
+    outline: none;
+    box-shadow: none;
+    border: none;
+}
+
+h3 {
+  font-size:1.17em!important;
+}
+
+label {
+  font-size:1em!important;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif!important;
+}
+body {display:flex!important;}
+
+#game_window{max-width:1000px;}
+</style>`
+
+let contentBox = document.getElementsByClassName("content_box")[0];
+let contentSingle = document.getElementsByClassName("content_single")[0];
+
+let containerRef = document.getElementsByClassName("container")[0];
+
+
+
+function createBanner(url, sibling, isLeft) {
+    let div = document.createElement("DIV");
+    let img = document.createElement("IMG");
+    div.style.position = "relative";
+    div.style.margin = "auto";
+    img.src = url;
+    
+
+    let x = document.createElement("DIV");
+    x.innerText = "_";
+    x.style.position = "absolute";
+    x.style.padding = "2px";
+    x.style.fontSize = "2pt";
+    x.style.cursor = "pointer";
+
+    div.appendChild(x);
+
+    div.appendChild(img);
+
+    if(isLeft) {
+        sibling.parentNode.insertBefore(div, sibling);
+    }
+    else {
+        sibling.parentNode.appendChild(div);
+    }
+    x.onclick = () => div.style.visibility = "hidden";
+    x.onclick = () => img.style.visibility = "hidden";
+    return img;
+}
+
+function addDynamicCSS() {
+    var css = `
+    #closeButton {
+        outline: none;
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        width: 16px;  /* Button width */
+        height: 15px; /* Button height */
+        position: relative; /* Needed for positioning the image */
+        display: inline-block;
+        cursor: pointer;
+    }
+    #closeButton:focus,
+    #closeButton:active {
+        outline: none;
+        box-shadow: none;
+        border: none;
+    }
+
+    #closeButton:hover {
+        outline: none;
+        border: none;
+    }
+
+    /* Image positioned in the bottom-right */
+    #closeIcon {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 16px;  /* Adjust as needed */
+        height: 15px; /* Adjust as needed */
+    }
+    `;
+    
+    var styleElem = document.createElement('style');
+    styleElem.type = 'text/css';
+    styleElem.appendChild(document.createTextNode(css));
+    document.head.appendChild(styleElem);
+}
+
+addDynamicCSS();
+
+
 campaignTrail_temp.election_json = [
     {
         "model": "campaign_trail.election",
