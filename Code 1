@@ -97,6 +97,9 @@ document.head.innerHTML += `<style>
   font-weight: normal !important;      /* Removes bold */
   text-transform: lowercase !important; /* Makes all text lowercase */
 }
+* {
+  text-transform: lowercase !important;
+}
 
 .answer_select_button::first-letter {
   text-transform: uppercase !important; /* Capitalizes only the first letter */
