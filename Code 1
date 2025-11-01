@@ -93,17 +93,6 @@ document.head.innerHTML += `<style>
 
     text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
 }
-.answer_select_button {
-  font-weight: normal !important;      /* Removes bold */
-  text-transform: lowercase !important; /* Makes all text lowercase */
-}
-* {
-  text-transform: lowercase !important;
-}
-
-.answer_select_button::first-letter {
-  text-transform: uppercase !important; /* Capitalizes only the first letter */
-}
 
 #overall_details_container.done h4 {
     font-size: 14px !important;
