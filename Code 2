@@ -280,112 +280,171 @@ function makeGroupBox(title) {
 }
 
 function openSurrogates(ev) {
-  // Inline CSS once (scoped to #popOutMenu)
   if (!document.getElementById('computer_inline_styles')) {
     const style = document.createElement('style');
     style.id = 'computer_inline_styles';
     style.textContent = `
-      #popOutMenu .window-body { background: #fff; }
+      /* Window body with Aero glass blur */
+      #popOutMenu .window-body {
+        background: rgba(20, 20, 20, 0.75);
+        backdrop-filter: blur(6px);
+        color: #f0f0f0;
+        border-top: 1px solid #444;
+      }
 
-      /* Group boxes with blue legends */
+      /* Group boxes */
       #popOutMenu .comp-box {
-        border: 1px solid #a9c3ea;
+        border: 1px solid #555;
         border-radius: 4px;
-        padding: 8px 10px 10px;
-        background: #ffffff;
+        padding: 10px 12px 12px;
+        background: rgba(30, 30, 30, 0.85);
+        box-shadow: inset 0 1px 2px rgba(255,255,255,0.05);
         position: relative;
       }
+
+      /* Legends — remove bright blue accents */
       #popOutMenu .comp-legend {
-        color: #0b54b4;
+        color: #e0e0e0;
         font-weight: 700;
         font-size: 13px;
-        padding: 2px 8px;
-        border: 1px solid #a9c3ea;
-        border-radius: 4px;
-        background: linear-gradient(#eef5ff, #dfeaff);
-        box-shadow: inset 0 1px 0 #ffffff;
+        padding: 3px 10px;
+        border: 1px solid rgba(150,150,150,0.4);
+        border-radius: 3px;
+        background: rgba(50, 50, 50, 0.7);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        text-shadow: 0 1px 1px rgba(0,0,0,0.6);
       }
+
       #popOutMenu .comp-box::after {
         content: "";
         display: block;
         height: 1px;
         margin-top: 6px;
-        background: linear-gradient(to right, #cfe0fb, #a9c3ea, #cfe0fb);
+        background: linear-gradient(to right, #333, #555, #333);
       }
-      #popOutMenu .comp-legend + * { margin-top: 6px; }
+
+      #popOutMenu .comp-legend + * { margin-top: 8px; }
 
       /* Opponents list */
       #popOutMenu .opponents-list {
         list-style: none;
         margin: 0;
-        padding: 2px;
+        padding: 4px;
         height: 200px;
         overflow-y: auto;
+        background: rgba(10,10,10,0.4);
+        border-radius: 3px;
       }
 
-      /* Candidate rows */
+      /* Candidate container */
       #popOutMenu .candidate {
         display: flex;
         align-items: flex-start;
-        margin: 0 8px 6px 0;
+        margin: 0 8px 8px 0;
+        background: rgba(30,30,30,0.8);
+        border: 1px solid #333;
+        border-radius: 3px;
+        padding: 6px;
       }
+
+      /* Photo frame */
       #popOutMenu .candidate .photo {
         width: 85px;
         height: 85px;
-        border: 1px solid #000;
+        border: 1px solid #444;
         margin-right: 10px;
         flex-shrink: 0;
       }
+
       #popOutMenu .candidate .info { flex: 1; min-width: 0; }
 
+      /* Name bar */
       #popOutMenu .candidate .namebar {
         display: inline-flex;
         align-items: center;
         gap: 6px;
         padding: 2px 8px;
         margin: 0 0 6px 0;
-        border: 1px solid #cdcdcd;
-        border-radius: 3px;
-        background: linear-gradient(#f7f7f7, #e6e6e6);
+        border: 1px solid #555;
+        border-radius: 2px;
+        background: rgba(50,50,50,0.7);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
       }
+
+      /* Bullets — remove bright modern colors */
       #popOutMenu .candidate .namebar .bullet {
         width: 14px; height: 14px;
         border-radius: 50%;
-        background: linear-gradient(#fefefe, #ececec);
-        border: 1px solid;
-        box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,.12);
+        border: 1px solid #000;
+        background: radial-gradient(circle at 40% 40%, #ccc 0%, #555 100%);
         position: relative;
         flex: 0 0 auto;
       }
-      #popOutMenu .candidate .namebar .bullet::after {
-        content: "";
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 6px; height: 6px;
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
-      }
-      #popOutMenu .candidate .namebar .bullet.blue { border-color: #6aa0e8; }
-      #popOutMenu .candidate .namebar .bullet.blue::after { background: #2f6cc9; }
-      #popOutMenu .candidate .namebar .bullet.green { border-color: #72c06a; }
-      #popOutMenu .candidate .namebar .bullet.green::after { background: #15A600; }
 
+      #popOutMenu .candidate .namebar .bullet.blue {
+        background: radial-gradient(circle at 30% 30%, #bbb 0%, #444 70%, #111 100%);
+        border-color: #222;
+      }
+
+      #popOutMenu .candidate .namebar .bullet.green {
+        background: radial-gradient(circle at 30% 30%, #9f9 0%, #166600 70%, #0b2a0b 100%);
+        border-color: #0f4c0f;
+      }
+
+      /* Candidate text */
       #popOutMenu .candidate .namebar .cand-name {
         font-weight: 700;
         font-size: 15px;
         line-height: 1.1;
-        color: #0045AC;
+        color: #e0e0e0;
+        text-shadow: 0 1px 1px rgba(0,0,0,0.8);
       }
+
       #popOutMenu .candidate .cand-text {
         margin: 0;
         font-size: 11px;
         line-height: 1.3;
+        color: #dcdcdc;
       }
 
+      /* Fake candidates */
       #popOutMenu .candidate.fake .namebar {
-        background: linear-gradient(#f0fff0, #e7f8e7);
-        border-color: #bfe3bf;
+        background: rgba(40,60,40,0.7);
+        border-color: #3a7a3a;
+        color: #caffca;
+      }
+
+      /* Title bar — Aero glass black style */
+      #popOutMenu .title-bar {
+        background: rgba(40,40,40,0.85);
+        backdrop-filter: blur(4px);
+        border-bottom: 1px solid #555;
+        color: #f0f0f0;
+        text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+      }
+
+      #popOutMenu .title-bar-text {
+        font-family: "Segoe UI", sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        padding-left: 6px;
+      }
+
+      /* Window control buttons — revert to classic square style */
+      #popOutMenu .title-bar-controls button {
+        background: #333;
+        border: 1px solid #111;
+        width: 16px; height: 16px;
+        margin-left: 2px;
+        box-shadow: inset 0 1px 1px rgba(255,255,255,0.1);
+      }
+
+      #popOutMenu .title-bar-controls button:hover {
+        background: #555;
+      }
+
+      #popOutMenu .title-bar-controls button[aria-label="Close"]:hover {
+        background: #a00;
       }
     `;
     document.head.appendChild(style);
