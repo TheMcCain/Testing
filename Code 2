@@ -46,14 +46,10 @@ cyoAdventure = function (a) {
 // VARIABLES
 
   if (ans == 3254 || ans == 5018 || ans == 5016) {
-        war  += 1;
+        War  += 1;
     }
 
-
-
 }
-
-
 
 HistHexcolour = ["#590205", "#20788c", "#5d0a61", "#ab076c"];
 HistName = ["Chris Christie", "Barack Hussein Obama", "Dennis Kucinich", "Penn Jillette"];
@@ -104,6 +100,7 @@ function onGameWindowChangeCandidates() {
 }
 
 let RomneyCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/SDY67Tf.png', name: 'Mitt Romney', text: 'Despite a failed bid in 2008, Romney plans to run again. If your administration makes an enemy out of big business, Romney will certainly be the one to face you in November.', button: 'Defer', id: 'ROMNEY_A'}
+let KucinichCand = { photo: 'https://i.imgur.com/nQ0rKUC.png', name: 'Dennis Kucinich', text: 'The bonafide leader of your progressive opposition has already taken to calling you a war criminal. If your administration is bloodlustful, Kucinich will certainly be the one to face you in November.', button: 'Defer', id: 'Kucinich_A'}
 let ChristieCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/lzV0zAy.png', name: 'Chris Christie', text: 'Your failed attempts to reform healthcare and kill Bin Laden have made the popular New Jersey governor enter the fray. Already, the polls are showing unbelievable margins between him and you.', button: 'Defer', id: 'CHRISTIE_A'}
 let HuntsmanCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/ThvCNpw.png', name: 'Jon Huntsman', text: 'With your ambassadorship scheme a bust, Jon Huntsman has officially entered the race for president. If your foreign policy proves a disaster, he will doubtless be the one to face you this November.', button: 'Defer', id: 'HUNTSMAN_B'}
 let CheneyCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/bMWFoxk.png', name: 'Dick Cheney', text: 'Dick Cheney? That Dick Cheney? It can\'t be real. What are the Republicans thinking, nominating the man who had a 13% approval rating upon leaving office? At this rate, him winning Wyoming would prove a challenge.', button: 'Defer', id: 'CHENEY_A'}
@@ -142,6 +139,7 @@ const menuItemsA = [
     { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/ThvCNpw.png', name: 'Jon Huntsman', text: 'A remarkably liberal mormon, the former Governor of Utah presents a unique threat - both in that he could become one of the biggest, yet also one of the easiest to take out. Attempting to sabotage him could further his resolve to win, however.', button: 'Defer', id: 'HUNTSMAN_A'},
     { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/pLJzf7f.png', name: 'David Petraeus', text: 'The popular General Petraeus could be coaxed into staging a run against you if your administration grows unpopular at home and abroad.', button: 'Defer', id: 'PETRAEUS_A'},
     { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/SDY67Tf.png', name: 'Mitt Romney', text: 'Despite a failed bid in 2008, Romney plans to run again. If your administration makes an enemy out of big business, Romney will certainly be the one to face you in November.', button: 'Defer', id: 'ROMNEY_A'},
+    { photo: 'https://i.imgur.com/WMEat7a.png', name: 'Dennis Kucinich', text: 'The bonafide leader of the progressive opposition has already taken to calling you a war criminal. If your Administration is full of bloodlust, Kucinich will certainly attempt to coup your Democratic Party before November.', button: 'Defer', id: 'ROMNEY_A'},
     { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/V3FjFMn.png', name: 'Joe Arpaio', text: 'Arpaio hopes to inherit the nativist mantle Pat Buchanan once held in his role as the chaotic and controversial sheriff of Tent City. Only a directionless and fearful GOP would ever see the likes of him nominated.', button: 'Defer', id: 'ARPAIO_A'},
     { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/K4Nk7qU.png', name: 'Ron Paul', text: 'After a successful grassroots campaign in 2008, Ron Paul remains more popular than ever in the eyes of young conservatives. However, his dire reputation among the party elite ensures he\'ll never get the nomination.', button: 'Defer', id: 'PAUL_A'}
 ]
