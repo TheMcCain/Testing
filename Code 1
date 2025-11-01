@@ -65,7 +65,7 @@ document.head.innerHTML += `
 
 document.head.innerHTML += `<link
  rel="stylesheet"
- href="https://unpkg.com/xp.css"
+ href="https://unpkg.com/7.css"
 >`
 document.head.innerHTML += `<style>
 #announcement {
