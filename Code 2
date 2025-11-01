@@ -1,6 +1,39 @@
-var kucinich_active = -1; 
+    var Cred = 0;
+    var Chauvinism = 0;
+    var Daschle = 0;
+    var Compromise = 0;
+    var Public = 0;
+    var Socdem = 0;
+    var Neolib = 0;
+    var Quidpro = 0;
+    var Healthcare = 0;
+    var Wins = 0;
+    var Kagan = 0;
+    var Garland = 0;
+    var Sotomayor = 0;
+    var Wood = 0;
+    var Napolitano = 0;
+    var Sullivan = 0;
+    var Sears = 0;
+    var Harris = 0;
+    var Liu = 0;
+    var Ellison = 0;
+    var Holder = 0;
+    var Huntsman = 0;
+    var Rep = 0;
+    var Midterms = 0;
+    var Blob = 0;
+    var Farrakhan = 0;
+    var War = 0;
+	var Sanders = 0;
+	var songChange = 0;
+    var Carrington = 0;
+    var Instability = 0;
+    var Reagan = 0;
+    var Over = 0;
+    e.noCounter = 0
 
-campaignTrail_temp.cyoa = true;
+e.cyoa = true;
 
 function getQuestionNumberFromPk(pk) {
     return campaignTrail_temp.questions_json.map(q=>q.pk).indexOf(pk)-1;
@@ -13,279 +46,701 @@ cyoAdventure = function (a) {
 // VARIABLES
 
   if (ans == 3254 || ans == 5018 || ans == 5016) {
-        kucinich_active  += 2;
+        war  += 1;
     }
 
+
+
 }
+
+
+
+HistHexcolour = ["#590205", "#20788c", "#5d0a61", "#ab076c"];
+HistName = ["Chris Christie", "Barack Hussein Obama", "Dennis Kucinich", "Penn Jillette"];
+HistEV = [370, 168, 0, 0];
+HistPV = ["68,672,437", "56,492,526", "1,725,647", "1,195,818"];
+HistPVP = ["53.6%", "44.1%", "1.3%", "0.9%"];
+
+function onGameWindowChangeCandidates() {
+    const resultsTableHolder = document.getElementById("overall_details_container");
+    
+    if (!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
+        return;
+    }
+    
+    resultsTableHolder.classList.add("done");
+    
+    const resultsTable = resultsTableHolder.childNodes[3]?.childNodes[3]?.children[0];
+    if (resultsTable) {
+        for (let i = 0; i < resultsTable.children.length; i++) {
+            const row = resultsTable.children[i];
+            const name = row.firstChild?.innerText?.replaceAll("-", "").trim();
+            
+            row.insertCell(1);
+            
+            if (i === 0) {
+                row.children[1].innerHTML = '<span style="font-weight:bold">Running Mate</span>';
+            } else if (name) {
+                row.children[1].innerHTML = vpTable[name] || "";
+            }
+        }
+    }
+    
+    const resultsTableHistorical = resultsTableHolder.childNodes[5]?.childNodes[3]?.children[0];
+    if (resultsTableHistorical) {
+        for (let i = 0; i < resultsTableHistorical.children.length; i++) {
+            const row = resultsTableHistorical.children[i];
+            const name = row.childNodes[1]?.innerText?.replaceAll("-", "").trim();
+            
+            row.insertCell(1);
+            
+            if (i === 0) {
+                row.children[1].innerHTML = '<span style="font-weight:bold">Running Mate</span>';
+            } else if (name) {
+                row.children[1].innerHTML = vpTableHistorical[name] || "";
+            }
+        }
+    }
+}
+
+let RomneyCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/SDY67Tf.png', name: 'Mitt Romney', text: 'Despite a failed bid in 2008, Romney plans to run again. If your administration makes an enemy out of big business, Romney will certainly be the one to face you in November.', button: 'Defer', id: 'ROMNEY_A'}
+let ChristieCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/lzV0zAy.png', name: 'Chris Christie', text: 'Your failed attempts to reform healthcare and kill Bin Laden have made the popular New Jersey governor enter the fray. Already, the polls are showing unbelievable margins between him and you.', button: 'Defer', id: 'CHRISTIE_A'}
+let HuntsmanCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/ThvCNpw.png', name: 'Jon Huntsman', text: 'With your ambassadorship scheme a bust, Jon Huntsman has officially entered the race for president. If your foreign policy proves a disaster, he will doubtless be the one to face you this November.', button: 'Defer', id: 'HUNTSMAN_B'}
+let CheneyCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/bMWFoxk.png', name: 'Dick Cheney', text: 'Dick Cheney? That Dick Cheney? It can\'t be real. What are the Republicans thinking, nominating the man who had a 13% approval rating upon leaving office? At this rate, him winning Wyoming would prove a challenge.', button: 'Defer', id: 'CHENEY_A'}
+let CheneyImpeach = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/I7JJt2v.png', name: 'Dick Cheney', text: 'What the fuck are you doing? Are you going to lose to DICK FUCKING CHENEY?', button: 'Defer', id: 'CHENEY_B'}
+let GingrichCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/0fmfNqs.png', name: 'Newt Gingrich', text: 'The architect of the \'Republican Revolution\' has returned, this time to court voters angered by your administration\'s dovishness on national security.', button: 'Defer', id: 'GINGRICH_A'}
+let BachmannCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/NWD5Got.png', name: 'Michele Bachmann', text: 'With evangelical outrage on the rise since the beginning of your term, Michele Bachmann has tapped into that momentum to put her ahead in the polls.', button: 'Defer', id: 'BACHMANN_A'}
+let TrumpCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/rnjfBX6.png', name: 'Donald Trump', text: 'He\'s flirted with a presidential run many times before, but always backed down from it. However, this time, with your failure to save the working class, it seems a wave of populism may carry Trump to the nomination.', button: 'Defer', id: 'TRUMP_A'}
+let PaulCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/Ku6HQf0.png', name: 'Ron Paul', text: 'Thanks to you bailing out the banks, Ron Paul has gained enormous momentum among Tea Party conservatives and online social media. If there\'s no one else to oppose you, Paul will surely get the nomination.', button: 'Defer', id: 'PAUL_B'}
+let PaulCan = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/Ku6HQf0.png', name: 'Ron Paul', text: 'Thanks to you bailing out the banks, Ron Paul has gained enormous momentum among Tea Party conservatives and online social media. If there\'s no one else to oppose you, Paul will surely get the nomination.', button: 'Defer', id: 'PAUL_C'}
+let PetraeusCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/pLJzf7f.png', name: 'David Petraeus', text: 'The popular General Petraeus could be coaxed into staging a run against you if your administration grows unpopular at home and abroad.', button: 'Defer', id: 'PETRAEUS_A'}
+let ArpaioCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/V3FjFMn.png', name: 'Joe Arpaio', text: 'Arpaio hopes to inherit the nativist mantle Pat Buchanan once held in his role as the chaotic and controversial sheriff of Tent City. Only a directionless and fearful GOP would ever see the likes of him nominated.', button: 'Defer', id: 'ARPAIO_A'}
+let McChrytalCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/oWWMhHL.png', name: 'Stanley McChrystal', text: 'Bush\'s former Iraq military governor, General Stanley McChrystal fumes after your decision to terminate him. Rumor is he may seek revenge on you this November.', button: 'Defer', id: 'MCCHRYSTAL_A'}
+let BloombergCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/nxlFCha.png', name: 'Michael Bloomberg', text: 'Alarmed by your administration\'s radical anti-police agenda, Mayor Bloomberg offers himself up as a bipartisan voice who\'ll bring stability back to America like he brought to New York.', button: 'Defer', id: 'BLOOMBERG_A'}
+let RiceCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/ZdVGNjU.png', name: 'Condoleezza Rice', text: 'The neoconservatives have returned following your administration\'s failure to intervene in the Middle East. If a rift were to form in the Democratic Party, they may just take advantage.', button: 'Defer', id: 'RICE_A'}
+let BushCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/AJ99FNc.png', name: 'Jeb Bush', text: 'The last of the Bushes, Jeb is cautiously testing the waters of a presidential bid, motivated by anger over your disrespect towards his brother\'s legacy.', button: 'Defer', id: 'BUSH_A'}
+let EastwoodCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/uDaHSC8.png', name: 'Clint Eastwood', text: 'Answering the call of those in need of a champion in our darkest hour, Clint Eastwood has succumb to the goading of libertarian bankrollers and conservative fear-mongers in a Hail Mary plot to liberate America.', button: 'Defer', id: 'EASTWOOD_A'}
+let CarsonCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/CidR9Ac.png', name: 'Ben Carson', text: '\'Mr. Fix-Some-Babies\' has gone from neurosurgeon to Evangelical wingnut to nominee after Eastwood\'s sudden exit. Its almost tragic enough to feel sorry for him, but not enough. This should be easy.', button: 'Defer', id: 'CARSON_A'}
+let McCainCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/NHDQAWt.png', name: 'John McCain', text: 'The fury of the blob culminates in the return of an elder statesman and war hero denied his rightful reward. This time, he\'s not playing nice.', button: 'Defer', id: 'MCCAIN_B'}
+let LiebermanCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/iPO9JJL.png', name: 'Joe Lieberman', text: 'With a career birthed by William F. Buckley and the likes of Lindsey Graham and Dick Cheney counted as his friends, it was only a matter of time Lieberman would sink low enough to stand on the Republican ticket.', button: 'Defer', id: 'LIEBERMAN_A'}
+let ZombieCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/rlRvpV8.png', name: 'Zombie Ronald Reagan', text: 'Reaching out to hearts and minds...minds...brains...<i>brains</i>.', button: 'Defer', id: 'ZOMBIE_A'}
+
+let SandersPrim = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/xgmjud1.png', name: 'Bernie Sanders', text: 'With your progressive base despondent, Bernie Sanders has had his name floated as a potential primary challenger, fueled by the hope of pushing you further left on certain issues.', button: 'Defer', id: 'SANDERS_A'}
+let SandersCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/ABupncU.png', name: 'Bernie Sanders', text: 'Outraged by your inflammatory remarks, Sanders leads an army of angry progressives into the general election, promising to destroy you for your betrayal of the left.', button: 'Defer', id: 'SANDERS_B'}
+let BeckCand = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/cH0Mbhn.png', name: 'Glenn Beck', text: 'Displeased by your response to the Arab Spring, former Fox News personality Glenn Beck has been compelled to launch his own candidacy in his belief the Republicans are ill-equipped to get the job done.', button: 'Defer', id: 'BECK_A'}
+let PaulSpoil = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/K4Nk7qU.png', name: 'Ron Paul', text: 'The populist fringe, pumped-up by Occupy Wall Street, have united behind Paul\'s bid, stroking his ego enough for him to go back on his refusal to play spoiler as a protest against a literal RINO nominee.', button: 'Defer', id: 'PAUL_D'}
+
+let HuntsmanFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/9p4BJvO.png', name: 'Jon Huntsman', text: 'Despite being one of Republican\'s most popular figures early on, he\'s committed political suicide by working for your administration.', button: 'Defer', id: 'HUNTSMAN_C'}
+let CainFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/YZa9mc9.png', name: 'Herman Cain', text: 'The author of the \'9-9-9\' tax plan has been gaining momentum lately thanks to your overspending budget. But without money, support and other factors, it\'s clear he won\'t get the nomination directly.', button: 'Defer', id: 'CAIN_A'}
+let SantorumFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/7brK5IX.png', name: 'Rick Santorum', text: 'The conservative \'carousel\' turns to Rick Santorum as the latest fad. With such unstable support, it\'s unlikely he will reach the nomination.', button: 'Defer', id: 'SANTORUM_A'}
+let PerryFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/MsKWVvM.png', name: 'Rick Perry', text: 'The former Republican front-runner finds himself struggling for support after many gaffes and poor debate performances. It would take a miracle for him to even reach the Republican ticket.', button: 'Defer', id: 'PERRY_A'}
+let SchwarzeneggerFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/RSl1t1L.png', name: 'Arnold Schwarzenegger', text: 'Disgraced ex-\'Governator\' Arnold Schwarzenegger would surely be chomping at the bit to run if only he were born here. You\'d never have that issue.', button: 'Defer', id: 'SCHWARZENEGGER_A'}
+let PalinFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/o6RhyhX.png', name: 'Sarah Palin', text: 'McCain\'s tag-team failure is enjoying immense popularity with Tea Party devotees, but the Alaskan would rather put that fame to use collecting cash over votes.', button: 'Defer', id: 'PALIN_A'}
+let McCainFake = { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/puKzG00.png', name: 'John McCain', text: 'Senator McCain stirs in bitter anger over his defeat to you. Without any viable path or a way to vindicate himself, though, his long-held presidential ambitions seem to be done for good.', button: 'Defer', id: 'MCCAIN_A'}
+
+const menuItemsA = [
+    { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/ThvCNpw.png', name: 'Jon Huntsman', text: 'A remarkably liberal mormon, the former Governor of Utah presents a unique threat - both in that he could become one of the biggest, yet also one of the easiest to take out. Attempting to sabotage him could further his resolve to win, however.', button: 'Defer', id: 'HUNTSMAN_A'},
+    { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/pLJzf7f.png', name: 'David Petraeus', text: 'The popular General Petraeus could be coaxed into staging a run against you if your administration grows unpopular at home and abroad.', button: 'Defer', id: 'PETRAEUS_A'},
+    { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/SDY67Tf.png', name: 'Mitt Romney', text: 'Despite a failed bid in 2008, Romney plans to run again. If your administration makes an enemy out of big business, Romney will certainly be the one to face you in November.', button: 'Defer', id: 'ROMNEY_A'},
+    { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/V3FjFMn.png', name: 'Joe Arpaio', text: 'Arpaio hopes to inherit the nativist mantle Pat Buchanan once held in his role as the chaotic and controversial sheriff of Tent City. Only a directionless and fearful GOP would ever see the likes of him nominated.', button: 'Defer', id: 'ARPAIO_A'},
+    { photo: 'https://file.garden/aNtAfG887DiA_7lO/Obamanation/K4Nk7qU.png', name: 'Ron Paul', text: 'After a successful grassroots campaign in 2008, Ron Paul remains more popular than ever in the eyes of young conservatives. However, his dire reputation among the party elite ensures he\'ll never get the nomination.', button: 'Defer', id: 'PAUL_A'}
+]
+
 
 let savedX = null;
 let savedY = null;
 
-function addHeadquarterButton() {
-    // Check if the button already exists
-    if (document.getElementById('headquarter_button')) {
-        return;
-    }
+const WinsMap = {
+    "-2": `Obama has <i><span style="color: #CE0F0F;">a few</i></span> <b>losses</b>. (<span style="color:#CE0F0F;">-2</span>)`,
+    "-1": `Obama has <i><span style="color: #CE0F0F;">a</i></span> <b>loss</b>. (<span style="color:#CE0F0F;">-1</span>)`,
+    "0": `Obama has <i><span style="color: #CE0F0F;">no</i></span> <b>wins</b>. (<span style="color:#CE0F0F;">0</span>)`,
+    "1": `Obama has <i><span style="color: #CE0F0F;">a</i></span> <b>win</b>. (<span style="color:#CE0F0F;">1</span>)`,
+    "2": `Obama has <i><span style="color: #FADC0E;">some</i></span> <b>wins</b>. (<span style="color:#FADC0E;">2</span>)`,
+    "3": `Obama has <i><span style="color: #98D937;">many</i></span> <b>wins</b>. (<span style="color:#98D937;">3</span>)`,
+    "4": `Obama has <i><span style="color: #98D937;">plenty</i></span> of <b>wins</b>. (<span style="color:#98D937;">4</span>)`,
+    "5": `Obama has <i><span style="color: #15A600;">tons</i></span> of <b>wins</b>. (<span style="color:#15A600;">5</span>)`,
+    "6": `Obama has <i><span style="color: #15A600;">tons</i></span> of <b>wins</b>. (<span style="color:#15A600;">6</span>)`,
+    "7": `Obama has <i><span style="color: #15A600;">tons</i></span> of <b>wins</b>. (<span style="color:#15A600;">7</span>)`,
+    "8": `Obama has <i><span style="color: #15A600;">tons</i></span> of <b>wins</b>. (<span style="color:#15A600;">7</span>)`,
+};
+const CredMap = {
+    "-9": `Obama has <i><span style="color: #CE0F0F;">god awful</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-9</span>)`,
+    "-8": `Obama has <i><span style="color: #CE0F0F;">god awful</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-8</span>)`,
+    "-7": `Obama has <i><span style="color: #CE0F0F;">god awful</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-7</span>)`,
+    "-6": `Obama has <i><span style="color: #CE0F0F;">abysmal</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-6</span>)`,
+    "-5": `Obama has <i><span style="color: #CE0F0F;">abysmal</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-5</span>)`,
+    "-4": `Obama has <i><span style="color: #CE0F0F;">abysmal</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-4</span>)`,
+    "-3": `Obama has <i><span style="color: #CE0F0F;">abysmal</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-3</span>)`,
+    "-2": `Obama has <i><span style="color: #CE0F0F;">negative</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-2</span>)`,
+    "-1": `Obama has <i><span style="color: #CE0F0F;">negative</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">-1</span>)`,
+    "0": `Obama has <i><span style="color: #CE0F0F;">no</i></span> <b>credibility</b>. (<span style="color:#CE0F0F;">0</span>)`,
+    "1": `Obama has <i><span style="color: #FADC0E;">little</i></span> <b>credibility</b>. (<span style="color:#FADC0E;">1</span>)`,
+    "2": `Obama has <i><span style="color: #FADC0E;">decent</i></span> <b>credibility</b>. (<span style="color:#FADC0E;">2</span>)`,
+    "3": `Obama has <i><span style="color: #FADC0E;">decent</i></span> <b>credibility</b>. (<span style="color:#FADC0E;">3</span>)`,
+    "4": `Obama has <i><span style="color: #FADC0E;">decent</i></span> <b>credibility</b>. (<span style="color:#FADC0E;">4</span>)`,
+    "5": `Obama has <i><span style="color: #98D937;">lots of</i></span> <b>credibility</b>. (<span style="color:#98D937;">5</span>)`,
+    "6": `Obama has <i><span style="color: #98D937;">lots of</i></span> <b>credibility</b>. (<span style="color:#98D937;">6</span>)`,
+    "7": `Obama has <i><span style="color: #98D937;">solid</i></span> <b>credibility</b>. (<span style="color:#98D937;">7</span>)`,
+    "8": `Obama has <i><span style="color: #98D937;">solid</i></span> <b>credibility</b>. (<span style="color:#98D937;">8</span>)`,
+	"9": `Obama has <i><span style="color: #98D937;">solid</i></span> <b>credibility</b>. (<span style="color:#98D937;">9</span>)`,
+    "10": `Obama has <i><span style="color: #15A600;">powerful</i></span> <b>credibility</b>. (<span style="color:#15A600;">10</span>)`,
+	"11": `Obama has <i><span style="color: #15A600;">powerful</i></span> <b>credibility</b>. (<span style="color:#15A600;">11</span>)`,
+	"12": `Obama has <i><span style="color: #15A600;">powerful</i></span> <b>credibility</b>. (<span style="color:#15A600;">12</span>)`,
+};
+const InstabilityMap = {
+    "0": `The nation is <i><span style="color: #15A600;">stable</span></i>. (<span style="color:#15A600;">0</span>)`,
+    "-1": `The nation is <i><span style="color: #98D937;">snapping</span></i>. (<span style="color:#98D937;">-1</span>)`,
+    "-2": `The nation is <i><span style="color: #FADC0E;">eroding</span></i>. (<span style="color:#FADC0E;">-2</span>)`,
+    "-3": `The nation is in a state of <i><span style="color: #CE0F0F;">anarchy</span></i>. (<span style="color:#CE0F0F;">-3</span>)`,
+    "-4": `The nation is <i><span style="color: #CE0F0F;">collapsing</span></i>. (<span style="color:#CE0F0F;">-4</span>)`,
+    "-5": `The nation has <i><span style="color: #CE0F0F;">fallen</span></i>. (<span style="color:#CE0F0F;">-5</span>)`
+};
 
-    // Find the reference button by its ID
-    const refButton = document.getElementById('view_electoral_map');
-    if (!refButton) {
-        return;
-    }
+var pictureDict = {
+    0: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/ivy0wkA.png",
+    1: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/hNrrsku.png",
+    2: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/8hsomzo.png",
+    3: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/sWbl3yX.png",
+    4: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/uqy0rjY.png",
+    5: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/HMHPpqc.png",
+    6: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/qMlUQrX.png",
+    7: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/JKQxYdB.png",
+    8: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/vUpJvoj.png",
+    9: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/vtTfn1G.png",
+    10: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/l8qh9VA.png",
+    11: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/jAvXQKK.png",
+    12: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/WLwkr7Y.png",
+    13: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/1ZUjwSs.png",
+    14: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/ll8sNCm.png",
+    15: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/JVe9eMo.png",
+    16: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/mXxcgyK.png",
+    17: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/7mO4OJ6.png",
+    18: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/xPdt5vc.png",
+    19: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/S3oEcfD.png",
+    20: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/1RbNCSy.png",
+    21: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/J32nPTD.png", 
+    22: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/G7zxnD7.png",
+    23: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/GBgBI5V.png",
+    24: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/O2KjWgL.png", 
+    25: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/htBPL9k.png",
+    26: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/Yf39TSD.png",
+    27: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/c9VBRBZ.png",
+	28: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/u3CriBu.png",
+    29: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/VilkN0H.png",
+    30: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/Hf7lR72.png",
+    31: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/KEbEiaj.png",
+    32: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/ICKEQfx.png",
+    33: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/stLfmQJ.png",
+    34: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/M0phsF6.png",
+    35: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/lYgoz4r.png",
+    36: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/0R0gJ40.png",
+    37: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/y0qK5O4.png",
+    38: "https://file.garden/aNtAfG887DiA_7lO/Obamanation/BGZYdHA.png", 
+};
 
-    // Create a new button element
-    const newButton = document.createElement('button');
+// ID groups
+const GARLAND_FAILED_IDS = new Set([9110, 9114, 8950, 9113, 8947, 8951, 9021, 9029, 9020, 9032, 9052, 9056, 9053, 9066, 9055, 9059, 9064]);
+const GARLAND_CHOSEN_IDS = new Set([8953, 8949, 8957, 9112, 9116, 9120, 9022, 9030, 9034, 9038, 9042, 9048, 9054, 9058, 9067, 9070, 9074, 9082]);
 
-    newButton.id = 'headquarter_button';
+const KAGAN_FAILED_IDS   = new Set([9025, 9024, 9060, 9062, 9063]);
+const KAGAN_CHOSEN_IDS   = new Set([8948, 8952, 8956, 9111, 9115, 9119, 9027, 9031, 9035, 9043, 9047, 9049, 9057, 9061, 9065, 9075, 9079, 9083]);
 
-    newButton.style.marginLeft = '1.5em';
+const STIMULUS_1T1_IDS   = new Set([8930, 8943]);
+const STIMULUS_780B_IDS  = new Set([8931, 8934, 8944]);
+// 8932 alone => 450B
 
-    newButton.innerHTML = 'The Field';
+const HEALTH_AAHC_IDS    = new Set([8994]); // America's Affordable Health Choices Act
+const HEALTH_PPAACA_IDS  = new Set([8980, 8984]); // Patient Protection & Affordable Care Act
+const HEALTH_AHFA_IDS    = new Set([8979, 8981, 8983, 8988, 8991, 8995, 8997]); // America's Healthy Future Act
+const HEALTH_FAIL_IDS    = new Set([9017]); // failed healthcare reform
 
-    // Attach the click event listener
-    newButton.addEventListener('click', openHeadquarter);
+const BK_IDS             = new Set([9098, 9101]); // Brown-Kaufman
+const DODD_FRANK_IDS     = new Set([9089, 9097, 9100, 9108]);
+const DODD_SHELBY_IDS    = new Set([9086, 9088, 9090, 9096, 9099, 9102, 9105, 9107]);
 
-    // Insert the new button next to the reference button
-    refButton.insertAdjacentElement('afterend', newButton);
+// Neptune Spear
+const NEPTUNE_SUCCESS_ID = 9160;
+const NEPTUNE_FAIL_ID    = 9158;
+
+const FAKE_BG_IDS = new Set([
+  "CAIN_A", "PERRY_A", "SCHWARZENEGGER_A", "PALIN_A", "PAUL_A", "MCCAIN_A", "HUNTSMAN_C", "SANTORUM_A", "PAUL_D", "SANDERS_A", "BECK_A"
+]);
+const GREEN_NAME_IDS = new Set([
+  "CAIN_A", "PERRY_A", "SCHWARZENEGGER_A", "PALIN_A", "PAUL_A", "MCCAIN_A", "HUNTSMAN_C", "SANTORUM_A", "PAUL_D", "SANDERS_A", "SANDERS_B", "BECK_A"
+]);
+
+function makeGroupBox(title) {
+  const fs = document.createElement('fieldset');
+  fs.className = 'comp-box';
+
+  const legend = document.createElement('legend');
+  legend.className = 'comp-legend';
+  legend.textContent = title;
+
+  fs.appendChild(legend);
+  return fs;
 }
 
-const menuItemsA = [ 
-    { photo: 'https://i.imgur.com/UHdgmxV.png', text: '<b>Joe Biden</b><br><b>Former Vice President</b><br>There’s a reason Obama passed him up in 2016. He thinks he can beat Trump, but he doesn’t know him like you do. Besides, the guy’s washed.', button: 'Defer', id: 'BIDEN_A'},
-    { photo: 'https://i.imgur.com/K1g90Pd.png', text: '<b>Bernie Sanders</b><br><b>Senator from Vermont</b><br>The craziest one in the race. Trump will eat him alive if he gets past the primaries. Don’t let him win.', button: 'Defer', id: 'SANDERS_A'},
-    { photo: 'https://i.imgur.com/4TqqrPA.png', text: '<b>Elizabeth Warren</b><br><b>Senator from Massachusetts</b><br>Slightly saner than Sanders. It’s the only positive she has. Her gender will undoubted sink her versus Trump.', button: 'Defer', id: 'WARREN_A'},
-    { photo: 'https://i.imgur.com/EY2CSTd.png', text: '<b>Pete Buttigieg</b><br><b>Mayor of Nowhere, Indiana</b><br>Voters were only looking at him as an alternative to Biden. That’s your role now. Time for him to run back to Indiana.', button: 'Defer', id: 'BUTTIGIEG_A'},
-    { photo: 'https://i.imgur.com/7AY2JyC.png', text: '<b>Amy Klobuchar</b><br><b>Senator from Minnesota</b><br>Her base is non-existent. Voters prefer Biden, Warren, hell, they prefer Buttigieg. Just another failed Minnesota Democrat.', button: 'Defer', id: 'KLOBUCHAR_A'},
-    { photo: 'https://i.imgur.com/HTDaLih.png', text: '<b>All the Rest</b><br><b>Various Meaningless Positions</b><br>Wastes of spaces. These jokers can’t even separate themselves from the rest of the pack. If you have no shot in hell, why bother?', button: 'Defer', id: 'OTHERS_A'},
-    { photo: 'https://i.imgur.com/LdVeYwI.png', text: '<b>Michael Bloomberg</b><br><b>Former Mayor of NYC</b><br>Here you are, waiting in the wings. No one in this field has what it takes to defeat Donald Trump. You do.', button: 'Defer', id: 'BLOOMBERG_A'},
-    { photo: 'https://i.imgur.com/nQ0rKUC.png', text: '<b>Dennis Kucinich</b><br><b>Representative from Ohio</b><br>You give them an inch, and they’ll take a mile. Dennis Kucinich, already proudly calling you a “war criminal,” has taken the progressive wing of the party by storm. If he actually runs though, you’d dispatch him no problem.', button: 'Defer', id: 'KUCINICH_A'},
+function openSurrogates(ev) {
+  // Inline CSS once (scoped to #popOutMenu)
+  if (!document.getElementById('computer_inline_styles')) {
+    const style = document.createElement('style');
+    style.id = 'computer_inline_styles';
+    style.textContent = `
+      #popOutMenu .window-body { background: #fff; }
 
-]
+      /* Group boxes with blue legends */
+      #popOutMenu .comp-box {
+        border: 1px solid #a9c3ea;
+        border-radius: 4px;
+        padding: 8px 10px 10px;
+        background: #ffffff;
+        position: relative;
+      }
+      #popOutMenu .comp-legend {
+        color: #0b54b4;
+        font-weight: 700;
+        font-size: 13px;
+        padding: 2px 8px;
+        border: 1px solid #a9c3ea;
+        border-radius: 4px;
+        background: linear-gradient(#eef5ff, #dfeaff);
+        box-shadow: inset 0 1px 0 #ffffff;
+      }
+      #popOutMenu .comp-box::after {
+        content: "";
+        display: block;
+        height: 1px;
+        margin-top: 6px;
+        background: linear-gradient(to right, #cfe0fb, #a9c3ea, #cfe0fb);
+      }
+      #popOutMenu .comp-legend + * { margin-top: 6px; }
 
-function openHeadquarter() {      
-    let questions = document.querySelector(".inner_window_question");
+      /* Opponents list */
+      #popOutMenu .opponents-list {
+        list-style: none;
+        margin: 0;
+        padding: 2px;
+        height: 200px;
+        overflow-y: auto;
+      }
 
-    // Check if the menu already exists
-    let popOutMenu = document.getElementById('popOutMenu');
-    if (!popOutMenu) {
-        // Create the pop-out menu container
-        popOutMenu = document.createElement('div');
-        popOutMenu.id = 'popOutMenu';
-        popOutMenu.style.position = 'absolute'; // Change to absolute for relative positioning
-        popOutMenu.style.width = '430px';
-        popOutMenu.style.padding = '15px';
-        popOutMenu.style.backgroundColor = '#fff';
-        popOutMenu.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.1)';
-        popOutMenu.style.border = '1px solid #ccc';
-        popOutMenu.style.zIndex = '1000';
-        popOutMenu.style.backgroundImage = 'url("https://i.imgur.com/eS7tZRW.png")';
-        popOutMenu.style.backgroundSize = 'cover';
-        popOutMenu.style.backgroundPosition = 'bottom';
-        popOutMenu.style.alignItems = 'center';     
+      /* Candidate rows */
+      #popOutMenu .candidate {
+        display: flex;
+        align-items: flex-start;
+        margin: 0 8px 6px 0;
+      }
+      #popOutMenu .candidate .photo {
+        width: 85px;
+        height: 85px;
+        border: 1px solid #000;
+        margin-right: 10px;
+        flex-shrink: 0;
+      }
+      #popOutMenu .candidate .info { flex: 1; min-width: 0; }
 
-        // Create the menu title
-        const menuTitle = document.createElement('h1');
-        menuTitle.innerText = 'Candidate Profiles';
-        menuTitle.style.textAlign = 'center';
-            menuTitle.style.fontFamily = '"Georgia Bold", "Georgia", serif';
-            menuTitle.style.color = '#9270DE';
-            menuTitle.style.textShadow = '4px 1px 4px #000000';
-        menuTitle.style.top = '-01px';   
-        menuTitle.style.position = 'relative';
-        menuTitle.style.marginTop = '-01px'; 
-        menuTitle.style.marginBottom = '-01px'; 
-        menuTitle.style.lineHeight = '0.7';
-        // menuTitle.style.backgroundColor = 'rgba(219, 208, 208, 0.5)'; 
-        menuTitle.style.padding = '2px';            
-        menuTitle.style.borderRadius = '1px';    
-        menuTitle.style.display = 'block';     
-        menuTitle.style.fontSize = '24px';
-        // menuTitle.style.outline = '1px solid #0F0E0C';
-        popOutMenu.appendChild(menuTitle);
-        
-        const profiles = document.createElement('h4');
-        profiles.innerText = 'Compiled by Kevin Sheekey';
-            profiles.style.fontFamily = '"Georgia Bold", "Georgia", serif';
-            profiles.style.color = '#9270DE';
-            profiles.style.textShadow = '4px 1px 4px #000000';
-            profiles.style.fontSize = '14px';
-        profiles.style.textAlign = 'center';
-        profiles.style.position = 'relative';
-        profiles.style.marginTop = '7px'; 
-        profiles.style.lineHeight = '0.7';
-        // profiles.style.backgroundColor = 'rgba(219, 208, 208, 0.5)'; 
-        profiles.style.padding = '2px';            
-        profiles.style.borderRadius = '1px';       
-        profiles.style.display = 'block';    
-        // profiles.style.outline = '1px solid #0F0E0C';
-        popOutMenu.appendChild(profiles);
+      #popOutMenu .candidate .namebar {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 2px 8px;
+        margin: 0 0 6px 0;
+        border: 1px solid #cdcdcd;
+        border-radius: 3px;
+        background: linear-gradient(#f7f7f7, #e6e6e6);
+      }
+      #popOutMenu .candidate .namebar .bullet {
+        width: 14px; height: 14px;
+        border-radius: 50%;
+        background: linear-gradient(#fefefe, #ececec);
+        border: 1px solid;
+        box-shadow: 0 1px 0 #fff, inset 0 1px 1px rgba(0,0,0,.12);
+        position: relative;
+        flex: 0 0 auto;
+      }
+      #popOutMenu .candidate .namebar .bullet::after {
+        content: "";
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 6px; height: 6px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: inset 0 0 0 1px rgba(0,0,0,.08);
+      }
+      #popOutMenu .candidate .namebar .bullet.blue { border-color: #6aa0e8; }
+      #popOutMenu .candidate .namebar .bullet.blue::after { background: #2f6cc9; }
+      #popOutMenu .candidate .namebar .bullet.green { border-color: #72c06a; }
+      #popOutMenu .candidate .namebar .bullet.green::after { background: #15A600; }
 
-        // Create the menu list
-        const menuListA = document.createElement('ul');
-        menuListA.style.listStyle = 'none';
-        menuListA.style.padding = '1px';
-        menuListA.style.maxHeight = '218px'; 
-        menuListA.style.overflowY = 'auto'; 
-        menuListA.style.outline = '1px solid #CCCCCC';
-        menuListA.style.border = '1px solid transparent';
+      #popOutMenu .candidate .namebar .cand-name {
+        font-weight: 700;
+        font-size: 15px;
+        line-height: 1.1;
+        color: #0045AC;
+      }
+      #popOutMenu .candidate .cand-text {
+        margin: 0;
+        font-size: 11px;
+        line-height: 1.3;
+      }
 
-        // Add menu items from the array
-        menuItemsA.forEach(item => {
-            const menuItem = document.createElement('div');
+      #popOutMenu .candidate.fake .namebar {
+        background: linear-gradient(#f0fff0, #e7f8e7);
+        border-color: #bfe3bf;
+      }
+    `;
+    document.head.appendChild(style);
+  }
 
-            if(item.id == "BIDEN_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            if(item.id == "SANDERS_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            if(item.id == "WARREN_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            if(item.id == "BUTTIGIEG_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            if(item.id == "KLOBUCHAR_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            if(item.id == "OTHERS_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            if(item.id == "BLOOMBERG_A"){
-                menuItem.style.background = 'linear-gradient(rgba(146, 112, 222, 0.9), rgba(146, 112, 222, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
+  const questions = document.querySelector(".inner_window_question");
 
-	        if(item.id == "KUCINICH_A" && kucinich_active == 1){
-                menuItem.style.background = 'linear-gradient(rgba(33, 65, 145, 0.9), rgba(33, 65, 145, 0.5)), url("https://i.imgur.com/liA0kKm.png")';
-            }
-            
-            menuItem.style.display = 'flex';
-            menuItem.style.alignItems = 'flex-start';
-            menuItem.style.marginBottom = '5px';
-            menuItem.style.backgroundColor = 'rgba(128, 142, 142, 0.5)'; 
-            menuItem.style.padding = '1px';            
-            menuItem.style.borderRadius = '3px';     
-            menuItem.style.outline = '1px solid #0F0E0C';
+  // group box builder for blue headers
+  function makeGroupBox(title) {
+    const fs = document.createElement('fieldset');
+    fs.className = 'comp-box';
+    const legend = document.createElement('legend');
+    legend.className = 'comp-legend';
+    legend.textContent = title;
+    fs.appendChild(legend);
+    return fs;
+  }
 
-            const photo = document.createElement('img');
-            photo.src = item.photo;
-            photo.style.border = "1px solid #0F0E0C"; 
-            photo.style.padding = "1px"; 
-            photo.style.width = '100px';
-            photo.style.height = '100px';
-            photo.style.marginRight = '10px';
+  // helper functions for checking answers
+  const ansSet = new Set(e.player_answers || []);
+  const has = (id) => ansSet.has(id) || ansSet.has(String(id));
+  const hasAny = (set) => {
+    for (const id of set) if (has(id)) return true;
+    return false;
+  };
 
-            const textAndButton = document.createElement('div');
+  // check if the menu already exists
+  let popOutMenu = document.getElementById('popOutMenu');
+  if (!popOutMenu) {
+    // Main container
+    popOutMenu = document.createElement('div');
+    popOutMenu.id = 'popOutMenu';
+    popOutMenu.className = 'window active';
+    popOutMenu.style.position = 'absolute';
+    popOutMenu.style.width = '480px';
+    popOutMenu.style.zIndex = '1000';
 
-            const text = document.createElement('p');
-            text.style.fontSize = "13px"; 
-            text.innerHTML = item.text; 
-            text.style.margin = '0';
+    // Title bar
+    const titleBar = document.createElement('div');
+    titleBar.className = 'title-bar';
+    const titleBarText = document.createElement('div');
+    titleBarText.className = 'title-bar-text';
+    titleBarText.textContent = 'Deep State';
+    const titleBarControls = document.createElement('div');
+    titleBarControls.className = 'title-bar-controls';
+    const minimizeButton = document.createElement('button');
+    minimizeButton.setAttribute('aria-label', 'Minimize');
+    const maximizeButton = document.createElement('button');
+    maximizeButton.setAttribute('aria-label', 'Maximize');
+    const closeButton = document.createElement('button');
+    closeButton.setAttribute('aria-label', 'Close');
+    closeButton.onclick = closeSurrogates;
+    titleBarControls.appendChild(minimizeButton);
+    titleBarControls.appendChild(maximizeButton);
+    titleBarControls.appendChild(closeButton);
+    titleBar.appendChild(titleBarText);
+    titleBar.appendChild(titleBarControls);
+    popOutMenu.appendChild(titleBar);
 
-            textAndButton.appendChild(text);
-            menuItem.appendChild(photo);
-            menuItem.appendChild(textAndButton);
+    // Window body
+    const windowBody = document.createElement('div');
+    windowBody.className = 'window-body';
+    windowBody.style.padding = '10px';
+    windowBody.style.fontFamily = '"Segoe UI", Arial, sans-serif';
 
-            menuListA.appendChild(menuItem);
-        });
-        popOutMenu.appendChild(menuListA);
+    // Top section
+    const topSection = document.createElement('div');
+    topSection.style.display = 'grid';
+    topSection.style.gridTemplateColumns = '1.4fr 1fr';
+    topSection.style.gap = '10px';
+    topSection.style.marginBottom = '10px';
 
-        const closeButton = document.createElement('button');
-        closeButton.innerText = 'Close';
-        closeButton.onclick = closeHeadquarter;
-        popOutMenu.appendChild(closeButton);
+    // Administration Pane (fieldset + legend)
+    const adminGroup = makeGroupBox('The Administration');
+    const adminContent = document.createElement('ul');
+    adminContent.style.listStyleType = 'disc';
+    adminContent.style.listStylePosition = 'inside';
+    adminContent.style.paddingLeft = '5px';
+    adminContent.style.margin = '0';
+    adminContent.style.fontSize = '11px';
 
-        document.body.appendChild(popOutMenu);
-
-        makeDraggable(popOutMenu);
-    } 
-
-    if (savedX !== null && savedY !== null) {
-        popOutMenu.style.left = savedX + 'px';
-        popOutMenu.style.top = savedY + 'px';
-    }
-    else {
-        const buttonRect = event.target.getBoundingClientRect();
-        popOutMenu.style.left = buttonRect.right + 353 + 'px'; // Offset X
-        popOutMenu.style.top = buttonRect.top - 292 + 'px'; // Offset Y
-        savedX = popOutMenu.getBoundingClientRect().left;
-        savedY = popOutMenu.getBoundingClientRect().top;
-    }
-
-    // Display the menu
-    popOutMenu.style.display = 'block';
-}
-
-function closeHeadquarter() {
-    const popOutMenu = document.getElementById('popOutMenu');
-    if (popOutMenu) {
-        savedX = popOutMenu.getBoundingClientRect().left;
-        savedY = popOutMenu.getBoundingClientRect().top;
-
-        popOutMenu.remove();
-    }
-}
-
-function refreshHeadquarter() {
-    const popOutMenu = document.getElementById('popOutMenu');
-    if (popOutMenu) {
-        popOutMenu.remove();
-        openHeadquarter();
-    }
-}
-
-function makeDraggable(element) {
-    let isDragging = false;
-    let offsetX, offsetY;
-
-    element.onmousedown = function(event) {
-        isDragging = true;
-        offsetX = event.clientX - element.getBoundingClientRect().left;
-        offsetY = event.clientY - element.getBoundingClientRect().top;
-
-        document.onmousemove = function(event) {
-            if (isDragging) {
-                const newX = event.clientX - offsetX;
-                const newY = event.clientY - offsetY;
-
-                // Update the position of the element
-                element.style.left = newX + 'px';
-                element.style.top = newY + 'px';
-
-                // Save the position in global variables
-                savedX = newX;
-                savedY = newY;
-            }
-        };
-
-        document.onmouseup = function() {
-            isDragging = false;
-            document.onmousemove = null;
-            document.onmouseup = null;
-        };
+    // helper function to add dynamic lines
+    const addLine = (html) => {
+      const li = document.createElement('li');
+      li.innerHTML = html;
+      adminContent.appendChild(li);
     };
+
+    addLine(`${WinsMap[String(Wins)]}`);
+    addLine(`${CredMap[String(Cred)]}`);
+	
+	if (Carrington > 0) {
+        const instabilityText = InstabilityMap[String(Instability)] || `National instability: ${Instability}`;
+        addLine(instabilityText);
+    }
+
+    if (hasAny(GARLAND_FAILED_IDS)) addLine(`We've <i>resorted to</i> judge <span style="color: #CE0F0F;">Merrick Garland</span>.`);
+    if (hasAny(GARLAND_CHOSEN_IDS)) addLine(`We've <i>appointed</i> judge <span style="color: #FADC0E;">Merrick Garland</span>.`);
+    if (hasAny(KAGAN_FAILED_IDS)) addLine(`We've <i>resorted to</i> judge <span style="color: #CE0F0F;">Elena Kagan</span>.`);
+    if (hasAny(KAGAN_CHOSEN_IDS)) addLine(`We've <i>appointed</i> judge <span style="color: #FADC0E;">Elena Kagan</span>.`);
+    if (Sullivan > 0) addLine(`We've <i>appointed</i> judge <span style="color: #FADC0E;">Kathleen Sullivan</span>.`);
+    if (Napolitano > 0) addLine(`We've <i>appointed</i> judge <span style="color: #98D937;">Janet Napolitano</span>.`);
+    if (Sotomayor > 0) addLine(`We've <i>appointed</i> judge <span style="color: #98D937;">Sonia Sotomayor</span>.`);
+    if (Wood > 0) addLine(`We've <i>appointed</i> judge <span style="color: #98D937;">Diane Wood</span>.`);
+    if (Sears > 0) addLine(`We've <i>appointed</i> judge <span style="color: #98D937;">Leah Ward Sears</span>.`);
+    if (Harris > 0) addLine(`We've <i>appointed</i> judge <span style="color: #15A600;">Kamala Harris</span>.`);
+    if (Holder > 0) addLine(`We've <i>appointed</i> judge <span style="color: #15A600;">Eric Holder</span>.`);
+    if (Ellison > 0) addLine(`We've <i>appointed</i> judge <span style="color: #15A600;">Keith Ellison</span>.`);
+    if (Liu > 0) addLine(`We've <i>appointed</i> judge <span style="color: #15A600;">Goodwin Liu</span>.`);
+    if (hasAny(STIMULUS_1T1_IDS)) addLine(`We've <i>passed</i> a <span style="color: #15A600;">$1.1 trillion</span> stimulus plan.`);
+    if (hasAny(STIMULUS_780B_IDS)) addLine(`We've <i>passed</i> a <span style="color: #98D937;">$780 billion</span> stimulus plan.`);
+    if (has(8932)) addLine(`We've <i>passed</i> a <span style="color: #FADC0E;">$450 billion</span> stimulus plan.`);
+    if (hasAny(HEALTH_AAHC_IDS)) addLine(`We've <i>signed</i> the <span style="color: #15A600;">America's Affordable</span><br><span style="color: #15A600;">Health Choices Act</span>.`);
+    if (hasAny(HEALTH_PPAACA_IDS)) addLine(`We've <i>signed</i> the <span style="color: #98D937;">Patient Protection &</span><br><span style="color: #98D937;">Affordable Care Act</span>.`);
+    if (hasAny(HEALTH_AHFA_IDS)) addLine(`We've <i>signed</i> the <span style="color: #FADC0E;">America's Healthy Future</span><br><span style="color: #FADC0E;">Act</span>.`);
+    if (hasAny(HEALTH_FAIL_IDS)) addLine(`We've <em><span style="color: #CE0F0F;">failed healthcare reform</span></em>.`);
+    if (hasAny(BK_IDS)) addLine(`We've <i>signed</i> the <span style="color: #15A600;">Brown-Kaufman Act</span>.`);
+    if (hasAny(DODD_FRANK_IDS)) addLine(`We've <i>signed</i> the <span style="color: #98D937;">Dodd-Frank Act</span>.`);
+    if (hasAny(DODD_SHELBY_IDS)) addLine(`We've <i>signed</i> the <span style="color: #FADC0E;">Dodd-Shelby Act</span>.`);
+    if (has(NEPTUNE_SUCCESS_ID)) addLine(`Operation <strong>Neptune Spear</strong> is <span style="color: #98D937;">a success</span>.`);
+    if (has(NEPTUNE_FAIL_ID)) addLine(`Operation <strong>Neptune Spear</strong> is <span style="color: #CE0F0F;">a failure</span>.`);
+
+    adminGroup.appendChild(adminContent);
+
+    // Latest News Pane (fieldset + legend)
+    const newsGroup = makeGroupBox('Latest News');
+    const qpic = document.createElement('img');
+    qpic.src = pictureDict[e.noCounter] || "https://file.garden/aNtAfG887DiA_7lO/Obamanation/oFkHxtI.png";
+    qpic.style.width = '135px';
+    qpic.style.height = '152px';
+    qpic.style.display = 'block';
+    qpic.style.margin = '0 auto';
+    qpic.style.border = '1px solid #808080';
+    newsGroup.appendChild(qpic);
+
+    topSection.appendChild(adminGroup);
+    topSection.appendChild(newsGroup);
+    windowBody.appendChild(topSection);
+
+    // Opponent Index
+    const opponentGroup = makeGroupBox('Opponent Index');
+    const menuListA = document.createElement('ul');
+    menuListA.className = 'opponents-list has-scrollbar';
+
+    const fragment = document.createDocumentFragment();
+    menuItemsA.forEach(item => {
+      const menuItem = document.createElement('div');
+      menuItem.className = 'candidate';
+      if (FAKE_BG_IDS.has(item.id)) menuItem.classList.add('fake');
+
+      // Photo
+      const photo = document.createElement('img');
+      photo.className = 'photo';
+      photo.src = item.photo;
+      menuItem.appendChild(photo);
+
+      // Info column
+      const info = document.createElement('div');
+      info.className = 'info';
+
+      // Name bar
+      const namebar = document.createElement('div');
+      namebar.className = 'namebar';
+
+      const bullet = document.createElement('span');
+      bullet.className = 'bullet ' + (GREEN_NAME_IDS.has(item.id) ? 'green' : 'blue');
+
+      const name = document.createElement('span');
+      name.className = 'cand-name';
+      name.style.color = GREEN_NAME_IDS.has(item.id) ? "#15A600" : "#0045AC";
+      name.textContent = item.name;
+
+      namebar.appendChild(bullet);
+      namebar.appendChild(name);
+      info.appendChild(namebar);
+
+      // Description
+      const text = document.createElement('p');
+      text.className = 'cand-text';
+      text.innerHTML = item.text;
+      info.appendChild(text);
+
+      menuItem.appendChild(info);
+      fragment.appendChild(menuItem);
+    });
+
+    menuListA.appendChild(fragment);
+    opponentGroup.appendChild(menuListA);
+    windowBody.appendChild(opponentGroup);
+    popOutMenu.appendChild(windowBody);
+    document.body.appendChild(popOutMenu);
+
+    // apply draggable behavior to the title bar
+    makeDraggable(popOutMenu, titleBar);
+  }
+
+  if (savedX !== null && savedY !== null) {
+    popOutMenu.style.left = savedX + 'px';
+    popOutMenu.style.top = savedY + 'px';
+  } else {
+    const evt = ev || window.event;
+    const buttonRect = evt && evt.target && evt.target.getBoundingClientRect
+      ? evt.target.getBoundingClientRect()
+      : { right: window.innerWidth / 2, top: window.innerHeight / 2 };
+
+    const initialX = buttonRect.right + window.scrollX + 10;
+    const initialY = buttonRect.top + window.scrollY - 250;
+
+    popOutMenu.style.left = initialX + 'px';
+    popOutMenu.style.top = initialY + 'px';
+
+    savedX = initialX;
+    savedY = initialY;
+  }
+
+  popOutMenu.style.display = 'block';
 }
 
-function handleMutations(mutationsList, observer) {
-    if (observerRunning) return;
-    observerRunning = true;
-
-    addHeadquarterButton()
-
-    observer.observe(document.documentElement, { childList: true, subtree: true });
-    observerRunning = false;
+function closeSurrogates() {
+  const popOutMenu = document.getElementById('popOutMenu');
+  if (popOutMenu) {
+    savedX = popOutMenu.getBoundingClientRect().left;
+    savedY = popOutMenu.getBoundingClientRect().top;
+    popOutMenu.remove();
+  }
 }
 
+function refreshSurrogates() {
+  const popOutMenu = document.getElementById('popOutMenu');
+  if (popOutMenu) {
+    popOutMenu.remove();
+    openSurrogates();
+  }
+}
 
+function makeDraggable(element, handle) {
+  const dragHandle = handle || element;
+  let isDragging = false;
+  let offsetX, offsetY;
+  
+  const updatePosition = (clientX, clientY) => {
+    element.style.left = `${clientX - offsetX}px`;
+    element.style.top = `${clientY - offsetY}px`;
+    savedX = clientX - offsetX;
+    savedY = clientY - offsetY;
+  };
+  
+  const onMove = (e) => {
+    if (!isDragging) return;
+    const clientX = e.clientX ?? e.touches[0].clientX;
+    const clientY = e.clientY ?? e.touches[0].clientY;
+    updatePosition(clientX, clientY);
+  };
+  
+  const onEnd = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    document.body.classList.remove('is-dragging');
+    document.removeEventListener('mousemove', onMove);
+    document.removeEventListener('mouseup', onEnd);
+    document.removeEventListener('touchmove', onMove);
+    document.removeEventListener('touchend', onEnd);
+  };
+  
+  const onStart = (e) => {
+    const target = e.target;
+    if (['BUTTON', 'INPUT', 'SELECT', 'TEXTAREA', 'A'].includes(target.tagName)) {
+      return;
+    }
+    
+    isDragging = true;
+    const rect = element.getBoundingClientRect();
+    const clientX = e.clientX ?? e.touches[0].clientX;
+    const clientY = e.clientY ?? e.touches[0].clientY;
+    offsetX = clientX - rect.left;
+    offsetY = clientY - rect.top;
+    
+    document.body.classList.add('is-dragging');
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('mouseup', onEnd);
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('touchend', onEnd);
+    
+    e.preventDefault();
+  };
+  
+  dragHandle.addEventListener('mousedown', onStart);
+  dragHandle.addEventListener('touchstart', onStart, { passive: false });
+  
+  return () => {
+    dragHandle.removeEventListener('mousedown', onStart);
+    dragHandle.removeEventListener('touchstart', onStart);
+    onEnd();
+  };
+}
+
+// prevent text highlighting while dragging
+const dragStyle = document.createElement('style');
+dragStyle.innerHTML = `.is-dragging * { user-select: none; }`;
+document.head.appendChild(dragStyle);
+
+e.initDC = false;
+
+function addHeadquarterButton() {
+  if (document.getElementById('headquarter_button')) {
+    return;
+  }
+
+  const refButton = document.getElementById('view_electoral_map');
+  if (!refButton) return;
+
+  const newButton = document.createElement('button');
+  newButton.id = 'headquarter_button';
+  newButton.style.marginLeft = '1.5em';
+  newButton.innerHTML = 'Deep State';
+
+  newButton.addEventListener('click', openSurrogates);
+
+  refButton.insertAdjacentElement('afterend', newButton);
+}
+
+async function handleFooter() {
+  var gameWindow = document.getElementById('game_window');
+  addHeadquarterButton();
+};
+
+async function handleMutations(mutationsList, observer) {
+  if (observerRunning) return;
+  observerRunning = true;
+  observer.disconnect();
+  await handleFooter();
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  observerRunning = false;
+}
+let processedNodes = new Set();
 let observerRunning = false;
 
 var element = document.getElementById('controlElement');
 if (!element) {
-	let singleObserver = new MutationObserver(handleMutations);
-	singleObserver.observe(document.documentElement, { childList: true, subtree: true });
-	var controlElement = document.createElement('div');
-	controlElement.style.display = 'none';
-	controlElement.id = 'controlElement';
-	document.body.appendChild(controlElement);
+  let singleObserver = new MutationObserver(handleMutations);
+  singleObserver.observe(document.documentElement, { childList: true, subtree: true });
+  var controlElement = document.createElement('div');
+  controlElement.style.display = 'none';
+  controlElement.id = 'controlElement';
+  document.body.appendChild(controlElement);
+}
+
+const gameWindowNode = document.getElementById("game_window");
+const candidateWatcherConfig = { attributes: true, childList: true, subtree: true };
+
+const candidateObserver = new MutationObserver(onGameWindowChangeCandidates);
+if (gameWindowNode) {
+  candidateObserver.observe(gameWindowNode, candidateWatcherConfig);
 }
 
 campaignTrail_temp.questions_json = [
