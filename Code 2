@@ -39,6 +39,11 @@ function getQuestionNumberFromPk(pk) {
     return campaignTrail_temp.questions_json.map(q=>q.pk).indexOf(pk)-1;
 }
 
+	function tunnel(new_q){
+		return e.questions_json[e.questions_json.map(f=>f.pk).indexOf(new_q)];
+	} 
+
+
 cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length-1];
         e.noCounter += 1;
@@ -49,6 +54,14 @@ cyoAdventure = function (a) {
         War  += 1;
     }
 
+if (ans == 3252) { // opens up a 2nd path
+campaignTrail_temp.questions_json[1] = tunnel(8779);  
+campaignTrail_temp.questions_json[2] = tunnel(8781);  
+campaignTrail_temp.questions_json[3] = tunnel(8783);  
+campaignTrail_temp.questions_json[4] = tunnel(8785);  
+campaignTrail_temp.questions_json[5] = tunnel(8787);  
+
+ }
 }
 
 HistHexcolour = ["#590205", "#20788c", "#5d0a61", "#ab076c"];
@@ -1025,6 +1038,69 @@ campaignTrail_temp.questions_json = [
             "description": "On the weekend before the election, Lyndon Johnson's peace negotiations have collapsed with the North Vietnamese. Even worse, there are rumors that a Nixon operative has sabotaged the negotiations. Nixon swears to you on his honor that he is innocent. Will you make this an issue over the last two days of the campaign?",
             "likelihood": 1
         }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8779,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 2",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8781,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 3",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8783,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 4",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8785,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 5",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8787,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 6",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8789,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 7",
+            "likelihood": 1
+        }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 8791,
+        "fields": {
+            "priority": 0,
+            "description": "Path 2 Question 8",
+            "likelihood": 1
+        }
     }
 ]
 
@@ -1732,6 +1808,62 @@ campaignTrail_temp.answers_json = [
             "question": 338,
             "description": "Humphrey and the Democrats need to know in the future that they cannot ignore the due concerns of the South and win elections. I will focus on winning potential Humphrey supporters."
         }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8780,
+        "fields": {
+            "question": 8779,
+            "description": "New answer option"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8782,
+        "fields": {
+            "question": 8781,
+            "description": "New answer option"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8784,
+        "fields": {
+            "question": 8783,
+            "description": "New answer option"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8786,
+        "fields": {
+            "question": 8785,
+            "description": "New answer option"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8788,
+        "fields": {
+            "question": 8787,
+            "description": "New answer option"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8790,
+        "fields": {
+            "question": 8789,
+            "description": "New answer option"
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 8792,
+        "fields": {
+            "question": 8791,
+            "description": "New answer option"
+        }
     }
 ]
 
@@ -2407,21 +2539,21 @@ campaignTrail_temp.issues_json = [
         "pk": 11,
         "fields": {
             "name": "Vietnam",
-            "description": 0,
+            "description": null,
             "stance_1": "Hawkish",
-            "stance_desc_1": 0,
+            "stance_desc_1": null,
             "stance_2": "Hawkish",
-            "stance_desc_2": 0,
+            "stance_desc_2": null,
             "stance_3": "Somewhat Hawkish",
-            "stance_desc_3": 0,
+            "stance_desc_3": null,
             "stance_4": "Moderate",
-            "stance_desc_4": 0,
+            "stance_desc_4": null,
             "stance_5": "Somewhat Dovish",
-            "stance_desc_5": 0,
+            "stance_desc_5": null,
             "stance_6": "Dovish",
-            "stance_desc_6": 0,
+            "stance_desc_6": null,
             "stance_7": "Dovish",
-            "stance_desc_7": 0,
+            "stance_desc_7": null,
             "election": 4
         }
     },
@@ -2430,21 +2562,21 @@ campaignTrail_temp.issues_json = [
         "pk": 12,
         "fields": {
             "name": "Law and Order",
-            "description": 0,
+            "description": null,
             "stance_1": "Very Conservative",
-            "stance_desc_1": 0,
+            "stance_desc_1": null,
             "stance_2": "Conservative",
-            "stance_desc_2": 0,
+            "stance_desc_2": null,
             "stance_3": "Leans Conservative",
-            "stance_desc_3": 0,
+            "stance_desc_3": null,
             "stance_4": "Moderate",
-            "stance_desc_4": 0,
+            "stance_desc_4": null,
             "stance_5": "Leans Liberal",
-            "stance_desc_5": 0,
+            "stance_desc_5": null,
             "stance_6": "Liberal",
-            "stance_desc_6": 0,
+            "stance_desc_6": null,
             "stance_7": "Very Liberal",
-            "stance_desc_7": 0,
+            "stance_desc_7": null,
             "election": 4
         }
     },
@@ -2453,21 +2585,21 @@ campaignTrail_temp.issues_json = [
         "pk": 13,
         "fields": {
             "name": "Civil Rights",
-            "description": 0,
+            "description": null,
             "stance_1": "Segregationist",
-            "stance_desc_1": 0,
+            "stance_desc_1": null,
             "stance_2": "Segregationist",
-            "stance_desc_2": 0,
+            "stance_desc_2": null,
             "stance_3": "Conservative",
-            "stance_desc_3": 0,
+            "stance_desc_3": null,
             "stance_4": "Moderate",
-            "stance_desc_4": 0,
+            "stance_desc_4": null,
             "stance_5": "Moderate",
-            "stance_desc_5": 0,
+            "stance_desc_5": null,
             "stance_6": "Liberal",
-            "stance_desc_6": 0,
+            "stance_desc_6": null,
             "stance_7": "Very Liberal",
-            "stance_desc_7": 0,
+            "stance_desc_7": null,
             "election": 4
         }
     },
@@ -2476,21 +2608,21 @@ campaignTrail_temp.issues_json = [
         "pk": 14,
         "fields": {
             "name": "Economics",
-            "description": 0,
+            "description": null,
             "stance_1": "Very Conservative",
-            "stance_desc_1": 0,
+            "stance_desc_1": null,
             "stance_2": "Conservative",
-            "stance_desc_2": 0,
+            "stance_desc_2": null,
             "stance_3": "Leans Conservative",
-            "stance_desc_3": 0,
+            "stance_desc_3": null,
             "stance_4": "Moderate",
-            "stance_desc_4": 0,
+            "stance_desc_4": null,
             "stance_5": "Leans Liberal",
-            "stance_desc_5": 0,
+            "stance_desc_5": null,
             "stance_6": "Liberal",
-            "stance_desc_6": 0,
+            "stance_desc_6": null,
             "stance_7": "Very Liberal",
-            "stance_desc_7": 0,
+            "stance_desc_7": null,
             "election": 4
         }
     },
@@ -2499,21 +2631,21 @@ campaignTrail_temp.issues_json = [
         "pk": 15,
         "fields": {
             "name": "Great Society",
-            "description": 0,
+            "description": null,
             "stance_1": "Opposed",
-            "stance_desc_1": 0,
+            "stance_desc_1": null,
             "stance_2": "Opposed",
-            "stance_desc_2": 0,
+            "stance_desc_2": null,
             "stance_3": "Slightly Opposed",
-            "stance_desc_3": 0,
+            "stance_desc_3": null,
             "stance_4": "Moderate",
-            "stance_desc_4": 0,
+            "stance_desc_4": null,
             "stance_5": "Moderate",
-            "stance_desc_5": 0,
+            "stance_desc_5": null,
             "stance_6": "Liberal",
-            "stance_desc_6": 0,
+            "stance_desc_6": null,
             "stance_7": "Very Liberal",
-            "stance_desc_7": 0,
+            "stance_desc_7": null,
             "election": 4
         }
     }
@@ -8735,4 +8867,6 @@ campaignTrail_temp.answer_feedback_json = [
 
 campaignTrail_temp.jet_data = [{}
 ]
+
+
 
