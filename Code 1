@@ -98,13 +98,6 @@ document.head.innerHTML += `<style>
     font-size: 14px !important;
 }
 
-
-
-.inner_inner_window h3 {
-  background-color: #E8EFFF;
-  background: linear-gradient(to bottom, #C1C7E5, #CCD1E8, #E2E5F0);
-}
-
 #closeButton {
         background: none;
         border: none;
@@ -192,6 +185,12 @@ function addDynamicCSS() {
         box-shadow: none;
         border: none;
     }
+#tt img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
 
     #closeButton:hover {
         outline: none;
