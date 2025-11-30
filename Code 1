@@ -1,4 +1,4 @@
-
+e.collect_results=true;
 
 document.head.innerHTML += `
 <style>
