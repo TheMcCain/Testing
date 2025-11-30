@@ -1,4 +1,8 @@
+let polling = e.current_results;
 
+if (Cred = 0) {
+console.log(e.current_results);
+}
     var Cred = 0;
     var Chauvinism = 0;
     var Daschle = 0;
