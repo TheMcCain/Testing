@@ -1,4 +1,4 @@
-let polling = e.current_results;
+// finally got polling based cyoa to work W!
 
 if (Cred = 0) {
 console.log(e.current_results);
@@ -53,6 +53,11 @@ cyoAdventure = function (a) {
     ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length-1];
         e.noCounter += 1;
 
+let pop_vote = e.current_results[0];
+let playerPolling = pop_vote[1].pvp;
+if (playerPolling<0.4 ) {
+campaignTrail_temp.questions_json[2] = tunnel(270);  
+}
 // VARIABLES
 
   if (ans == 3254 || ans == 5018 || ans == 5016) {
@@ -61,7 +66,6 @@ cyoAdventure = function (a) {
 
 if (ans == 3252) { // opens up a 2nd path
 campaignTrail_temp.questions_json[1] = tunnel(8779);  
-campaignTrail_temp.questions_json[2] = tunnel(8781);  
 campaignTrail_temp.questions_json[3] = tunnel(8783);  
 campaignTrail_temp.questions_json[4] = tunnel(8785);  
 campaignTrail_temp.questions_json[5] = tunnel(8787);  
