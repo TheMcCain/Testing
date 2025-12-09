@@ -12228,6 +12228,9 @@ e.vpSwitcher = () => {
           if (e.question_number == 4) {
         window.setTimeout(e.vpSwitcher, 20)
       }
+          if (e.question_number == 5) {
+unlockAchievement("YOUR ACHIEVEMENT NAME HERE");
+}
 campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 151000, \"fields\": {\"candidate\": 77, \"running_mate\": 83}}]");
 }
   
@@ -12336,5 +12339,4 @@ function closeOverlay(overlay) {
     }, { once: true });
 }
 
-unlockAchievement("YOUR ACHIEVEMENT NAME HERE");
 
