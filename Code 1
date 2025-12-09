@@ -1,3 +1,10 @@
+campaignTrail_temp.achievements = {
+    "YOUR ACHIEVEMENT NAME HERE" : {
+        "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Stray_kitten_Rambo002.jpg/1200px-Stray_kitten_Rambo002.jpg",
+        "description" : "This is a test  This is a test  This is a test "
+    }
+}
+
 e.collect_results = true;
 
 document.head.innerHTML += `
