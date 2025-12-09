@@ -12231,3 +12231,110 @@ e.vpSwitcher = () => {
 campaignTrail_temp.running_mate_json = JSON.parse("[{\"model\": \"campaign_trail.running_mate\", \"pk\": 151000, \"fields\": {\"candidate\": 77, \"running_mate\": 83}}]");
 }
   
+// This loads up the achievements for the mod.
+let unlockedAchievements = JSON.parse(localStorage.getItem("unlockedAch")) || {};
+
+const achievementQueue = [];
+let playthroughAchievements = {};
+let isAchievementShowing = false;
+const achievementSoundURL = "";
+
+function unlockAchievement(title) {
+	if (typeof cheatsActive === 'undefined' || typeof campaignTrail_temp === 'undefined' || !campaignTrail_temp.CTS) { // not on CTS? then do nothing
+		return;
+	}
+	if (unlockedAchievements[title]) { // has been unlocked? then do nothing
+        return;
+    }
+	if (playthroughAchievements[title]) { // has been unlocked in this playthrough? then do nothing
+        return;
+    }
+	
+    // look up the achievement data using the title
+    const achData = campaignTrail_temp.achievements[title];
+
+    // if the achievement doesn't exist, log an error and exit
+    if (!achData) {
+        console.error(`Achievement with title "${title}" not found. Check for typos?`);
+        return;
+    }
+
+    // check conditions before awarding
+    if (achData.cannotBeCheated && cheatsActive) {
+        console.log(`Cannot unlock "${title}" because cheats are active.`);
+        return;
+    }
+    if (playthroughAchievements[title]) {
+        return; // already earned
+    }
+
+    // mark as earned for this playthrough
+    playthroughAchievements[title] = true;
+
+    // add the achievement to the display queue
+    queueAchievementPopup(title, achData.image, achievementSoundURL, achData.description);
+
+    // save to local storage if it's a new unlock and difficulty is valid
+    if (campaignTrail_temp.difficulty_level_multiplier <= 1 && campaignTrail_temp.CTS) {
+        // only queue the popup for a brand new unlock
+        queueAchievementPopup(title, achData.image, achievementSoundURL, achData.description);
+
+        // mark as permanently unlocked and save
+        unlockedAchievements[title] = true;
+        localStorage.setItem("unlockedAch", JSON.stringify(unlockedAchievements));
+        addAllAchievements();
+    }
+}
+
+function queueAchievementPopup(title, imageUrl, soundUrl, description) {
+	if (achievementQueue.some(ach => ach.title === title)) {
+			return;
+    }
+    achievementQueue.push({ title, imageUrl, soundUrl, description });
+    processAchievementQueue();
+}
+
+function processAchievementQueue() {
+    if (isAchievementShowing || achievementQueue.length === 0) return;
+
+    isAchievementShowing = true;
+    const { title, imageUrl, soundUrl, description } = achievementQueue.shift();
+
+    const achievementOverlay = document.createElement('div');
+    achievementOverlay.className = 'achievement-popup';
+
+    achievementOverlay.innerHTML = `
+        <img src="${imageUrl}" class="achievement-popup-image" alt="Achievement Icon">
+        <div>
+            <h3 class="achievement-popup-title">${title}</h3>
+            <p class="achievement-popup-desc">${description}</p>
+        </div>
+    `;
+
+    document.body.appendChild(achievementOverlay);
+
+    requestAnimationFrame(() => {
+        achievementOverlay.classList.add('show');
+    });
+    
+    // sound (we don't currently use this)
+    // const achievementSound = new Audio(soundUrl);
+    // ...
+
+    setTimeout(() => {
+        closeOverlay(achievementOverlay);
+    }, 7000);
+}
+
+function closeOverlay(overlay) {
+    overlay.classList.remove('show');
+    
+    overlay.addEventListener('transitionend', () => {
+        overlay.remove();
+        isAchievementShowing = false;
+        processAchievementQueue();
+    }, { once: true });
+}
+
+unlockAchievement("YOUR ACHIEVEMENT NAME HERE");
+
