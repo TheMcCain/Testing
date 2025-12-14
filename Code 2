@@ -1,3 +1,9 @@
+function ctsAchievement(achievement, difficultyChecker = true){
+	if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier<=1)||!difficultyChecker)
+		if(campaignTrail_temp.CTS){
+		unlockAchievement(achievement);
+	}
+}
 
 campaignTrail_temp.questions_json = [
     {
@@ -33948,3 +33954,4 @@ function closeOverlay(overlay) {
 }
 
 
+campaignTrail_temp.election_json[0]["fields"].advisor_url = 'https://i.imgur.com/3JS9ftX.png';
