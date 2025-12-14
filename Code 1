@@ -1,3 +1,70 @@
+EOHMap = true; 
+
+function changeMap() { 
+    var difficultyDiv = document.getElementById("difficulty_level");
+    if (difficultyDiv && !document.getElementById("colour")) { // Prevent multiple additions
+
+        // Colour selection form
+        var colourForm = document.createElement("form");
+        colourForm.name = "colour_selection";
+
+        var colourHeader = document.createElement("h3");
+        colourHeader.textContent = "Disable EOH Map?";
+        colourForm.appendChild(colourHeader);
+
+        var colourCheckbox = document.createElement("input");
+        colourCheckbox.type = "checkbox";
+        colourCheckbox.id = "colour";
+        colourCheckbox.checked = false;
+        colourForm.appendChild(colourCheckbox);
+
+        difficultyDiv.appendChild(colourForm);
+
+        // Colour checkbox logic
+        colourCheckbox.addEventListener("change", function() {
+            var c = campaignTrail_temp.candidate_json;
+            if (!c || c.length < 2) return;
+
+            if (this.checked) {
+             EOHMap = false; 
+    } else {
+             EOHMap = true; 
+
+            }
+        });
+
+        // Adjust difficulty header safely
+        var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
+        if (difficultyForm) {
+            var difficultyHeader = difficultyForm.querySelector('h3');
+            if (difficultyHeader) {
+                difficultyHeader.textContent = "Select campaign difficulty:";
+            }
+        }
+
+        // Style forms safely
+        var forms = difficultyDiv.querySelectorAll("form");
+        forms.forEach(f => {
+            f.style.display = "inline-block";
+            f.style.paddingLeft = "10px";
+            f.style.paddingRight = "10px";
+        });
+    }
+}
+
+// Observer wrapper
+if(!campaignTrail_temp.observer){
+    campaignTrail_temp.observer = true;
+
+    let masterObserver = new MutationObserver(function() {
+        masterObserver.disconnect();
+        changeMap();
+        masterObserver.observe(document.body, { childList: true, subtree: true });
+    });
+
+    masterObserver.observe(document.body, { childList: true, subtree: true });
+}
+
 campaignTrail_temp.election_json = [
     {
         "model": "campaign_trail.election",
