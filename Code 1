@@ -1,70 +1,3 @@
-EOHMap = true; 
-
-function changeMap() { 
-    var difficultyDiv = document.getElementById("difficulty_level");
-    if (difficultyDiv && !document.getElementById("colour")) { // Prevent multiple additions
-
-        // Colour selection form
-        var colourForm = document.createElement("form");
-        colourForm.name = "colour_selection";
-
-        var colourHeader = document.createElement("h3");
-        colourHeader.textContent = "Disable EOH Map?";
-        colourForm.appendChild(colourHeader);
-
-        var colourCheckbox = document.createElement("input");
-        colourCheckbox.type = "checkbox";
-        colourCheckbox.id = "colour";
-        colourCheckbox.checked = false;
-        colourForm.appendChild(colourCheckbox);
-
-        difficultyDiv.appendChild(colourForm);
-
-        // Colour checkbox logic
-        colourCheckbox.addEventListener("change", function() {
-            var c = campaignTrail_temp.candidate_json;
-            if (!c || c.length < 2) return;
-
-            if (this.checked) {
-             EOHMap = false; 
-    } else {
-             EOHMap = true; 
-
-            }
-        });
-
-        // Adjust difficulty header safely
-        var difficultyForm = document.querySelector('form[name="difficulty_level_selection"]');
-        if (difficultyForm) {
-            var difficultyHeader = difficultyForm.querySelector('h3');
-            if (difficultyHeader) {
-                difficultyHeader.textContent = "Select campaign difficulty:";
-            }
-        }
-
-        // Style forms safely
-        var forms = difficultyDiv.querySelectorAll("form");
-        forms.forEach(f => {
-            f.style.display = "inline-block";
-            f.style.paddingLeft = "10px";
-            f.style.paddingRight = "10px";
-        });
-    }
-}
-
-// Observer wrapper
-if(!campaignTrail_temp.observer){
-    campaignTrail_temp.observer = true;
-
-    let masterObserver = new MutationObserver(function() {
-        masterObserver.disconnect();
-        changeMap();
-        masterObserver.observe(document.body, { childList: true, subtree: true });
-    });
-
-    masterObserver.observe(document.body, { childList: true, subtree: true });
-}
-
 campaignTrail_temp.election_json = [
     {
         "model": "campaign_trail.election",
@@ -560,15 +493,23 @@ if (!e.runIntro) { // Windows 95 Custom Startup sound code
   e.runIntro = true;
   }
 
-quotes = ["It is hard to avoid the feeling that something very fundamental has happened in world history."]
+quotes = ["The President would seek to win at any cost. If it meant lying to the American people. If it meant lying to his Cabinet."]
 customquote = quotes[Math.floor((Math.random() * quotes.length))]
-corrr=`\n<h2>THE END OF HISTORY</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
+corrr=`\n<h2>THE IMPEACHMENT TRAIL</h2><font id='wittyquote' size='4' color='white'><em>`+customquote+`</em></font>`
 
-  nct_stuff.themes[nct_stuff.selectedTheme].text_col = "black"
+const gameWindow = $("#game_window")[0];
+
+gameWindow.style.backgroundImage = "url(https://i.postimg.cc/fyyBJR8C/image.png)";
+gameWindow.style.backgroundRepeat = "no-repeat";
+gameWindow.style.backgroundPosition = "center center";
+gameWindow.style.backgroundSize = "cover";
+
+// all this is stolen from 1996 end of history THANKS ASTRO
+    nct_stuff.themes[nct_stuff.selectedTheme].text_col = "black"
     nct_stuff.themes[nct_stuff.selectedTheme].coloring_title = "#0738A5"; 
     nct_stuff.themes[nct_stuff.selectedTheme].coloring_window = "#C0C0C0";
     $(".container")[0].style.backgroundColor = "#9e9898";
-    $("#game_window")[0].style.backgroundImage = "url(https://itsastronomical.com/assets/1996_EOH/sovietbg.png)";
+    $("#game_window")[0].style.backgroundImage = "url(https://i.postimg.cc/fyyBJR8C/image.png)";
     $("#game_window")[0].style.borderColor = "#C0C0C0";
     document.body.background = "https://external-preview.redd.it/e7L-hY0gBzi7A6HWknGZtXuOL29OzKDxZqWfiXHjh2o.png?auto=webp&s=fc2e705ccee6546a50ac2f06df3adb05248ff710";
     document.getElementById("header").src = "https://itsastronomical.com/assets/1996_EOH/windows.png"; 
@@ -733,7 +674,7 @@ var setCRTLines = (enabled) => {
 footer = $(".footer")[0]
 var button = document.createElement("button") // <button onclick="changeBanner()" style="font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;">Change banner</button>
 button.style = `font-weight: bold; height:19.49px; position: static; right: 770px; top: 0px;`
-button.innerHTML = "Toggle CRT Lines"
+button.innerHTML = "CRT Mode"
 footer.insertBefore(button, footer.firstChild);
 button.addEventListener("click", () => {crtOn = !crtOn; setCRTLines(crtOn)});
 
