@@ -4,7 +4,7 @@ campaignTrail_temp.election_json = [
         "pk": 9,
         "fields": {
             "year": 2000,
-            "summary": "<p>George W. Bush attempts to chart a new direction for the U.S., while Al Gore tries to win election as the sitting Vice President. Ralph Nader is a leftist third-party candidate. The economy has been booming, until quite recently, but President Clinton has been through an embarrassing scandal.</p><p>Candidates will debate what to do with a $200 billion budget surplus, among other things. In the real world, Florida was decided by 537 votes after 36 days and a Supreme Court decision.</p>",
+            "summary": "<p>Three years ago, the United States appeared to be entering an unparalleled era of prosperity. Wages were up, stocks were up, the surplus was up, and confidence was up. As the nation enters its next presidential election, confidence in that prosperity has fallen to an all-time low.   </p><p> Following the impeachment of President Clinton, most would be forgiven for assuming the Senate would acquit him. Unfortunately for the ''Comeback Kid'', opposition is quickly rising from the vast majority of Republicans, and various Southern and institutionalist Democrats. Despite remaining extremely popular with the American public, he may soon be forced to trade the judgement of the Presidency for that of the Senate.   </p>",
             "image_url": "https://www.jetsimon.com/public/static/images/2000-election-photo.jpg",
             "winning_electoral_vote_number": 270,
             "advisor_url": "https://www.jetsimon.com/public/static/images/rove-brazile.jpg",
