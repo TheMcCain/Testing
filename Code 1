@@ -128,7 +128,7 @@ campaignTrail_temp.candidate_json = [
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>These past few years haven't been the easiest for the Vice President. Elected alongside the President in comfy mandates in 1992 and 1996, he clearly has his own ambitions for the highest office. He's had some successes over his tenure, but Clinton's looseness threatens to ruin them. Americans believe he's just another Southern, Atari Democrat who's just tried to do what he believes is best for the country, but he knows he's more than that. </p><p> With Clinton's term wrapping up, he's already planning his own run for President, but if his superior falls to scandal or sin, he may not need to in the end. Even so, he's not sure how much longer he can keep cleaning up his partner's messes and defending him in his constant petty battles with Newt Gingrich and other Republican leaders in the House. Unless things change, he may soon be dragged into the muck of Clintonworld and swallowed whole.  </p>",
+            "description_as_running_mate": "<p>These past few years haven't been the easiest for the Vice President. Elected alongside the President in comfy mandates in 1992 and 1996, he has his own ambitions for the highest office. He's had some successes over his tenure, but Clinton's looseness threatens to ruin them. Americans believe he's just another Southern, Atari Democrat who's just tried to do what he believes is best for the country, but he knows he's more than that. </p><p> With Clinton's second term wrapping up, he's already planning his own run for President, but if his superior falls to scandal or sin, he may not need to in the end in order to become President. He's not sure how much longer he can keep cleaning up his partner's messes. It seems as if he is always defending him in his constant petty battles with Newt Gingrich and other Republicans. Unless things change, he may soon be dragged into the muck of Clintonworld and swallowed whole.  </p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -147,7 +147,243 @@ campaignTrail_temp.running_mate_json = [
  
 ]
 
-campaignTrail_temp.credits = "Dan Bryan"
+
+function ensureMetaViewport() {
+    if (!document.querySelector('meta[name="viewport"]')) {
+        const m = document.createElement('meta');
+        m.name = 'viewport';
+        m.content = 'width=device-width, initial-scale=1';
+        document.head.appendChild(m);
+    }
+}
+
+function applyGlobalStyles(css, id = 'app-theme') {
+    if ('adoptedStyleSheets' in document && 'replaceSync' in CSSStyleSheet.prototype) {
+        if (!applyGlobalStyles.sheet) {
+            applyGlobalStyles.sheet = new CSSStyleSheet();
+            document.adoptedStyleSheets = [...document.adoptedStyleSheets, applyGlobalStyles.sheet];
+        }
+        applyGlobalStyles.sheet.replaceSync(css);
+        return;
+    }
+
+    let el = document.getElementById(id);
+    if (!el) {
+        el = document.createElement('style');
+        el.id = id;
+        document.head.appendChild(el);
+    }
+    el.textContent = css;
+}
+
+
+
+// Credits button
+(function() {
+    const creditsList = [
+        "Coded and Written by TheMcCain",
+		"Special thanks to theanswerisme, littleamericanman, the ABAR Team, everyone who playtested, and the TCT community.",
+        "Another grateful thanks to 2016ALOT, 1996EOH, .. (more stuff coming soon totally)",
+        "Have fun!"
+    ];
+
+    if (typeof campaignTrail_temp !== 'undefined') {
+        campaignTrail_temp.credits = "<button onclick='window.showCredits()'><u>TheMcCain &</u></button>";
+    }
+  const injectCSS = () => {
+        const styleElement = document.createElement('style');
+        styleElement.textContent = `
+.credits-btn {
+	color: #000080;
+	cursor: pointer;
+	font-weight: normal;
+	padding: 2px 4px;
+	text-decoration: underline;
+	font-family: Tahoma, MS Sans Serif, Arial, sans-serif;
+	font-size: 12px;
+}
+
+.credits-btn:hover {
+	color: #000000;
+	background-color: #c0c0c0;
+	border: 1px solid #000000;
+	padding: 1px 3px;
+}
+
+.credits-modal {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	opacity: 0;
+	transition: opacity 120ms linear;
+	display: block;
+	pointer-events: none;
+}
+
+.credits-modal.active {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.credits-content {
+	background-color: #c0c0c0;
+	margin: 12% auto;
+	padding: 8px;
+	width: 40%;
+	max-width: 500px;
+	position: relative;
+	border-top: 2px solid #ffffff;
+	border-left: 2px solid #ffffff;
+	border-right: 2px solid #000000;
+	border-bottom: 2px solid #000000;
+	box-shadow: none;
+	font-family: Tahoma, MS Sans Serif, Arial, sans-serif;
+	font-size: 12px;
+	opacity: 0;
+	transform: translateY(-4px);
+	transition: opacity 120ms linear, transform 120ms linear;
+}
+
+.credits-modal.active .credits-content {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.credits-content h3 {
+	margin: 0 0 8px 0;
+	padding: 4px 6px;
+	font-size: 11px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: lowercase;
+	color: #ffffff;
+	background-color: #000080;
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+
+.credits-content ul {
+	list-style-type: none;
+	padding: 4px;
+	margin: 0;
+	background-color: #c0c0c0;
+}
+
+.credits-content li {
+	padding: 4px 2px;
+	font-size: 11px;
+	color: #000000;
+	border-bottom: 1px dotted #808080;
+}
+
+.credits-content li:last-child {
+	border-bottom: none;
+}
+
+.close-credits {
+	position: absolute;
+	right: 6px;
+	top: 4px;
+	width: 18px;
+	height: 18px;
+	line-height: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+	background-color: #c0c0c0;
+	cursor: pointer;
+	border-top: 1px solid #ffffff;
+	border-left: 1px solid #ffffff;
+	border-right: 1px solid #000000;
+	border-bottom: 1px solid #000000;
+}
+
+.close-credits:hover {
+	background-color: #a0a0a0;
+}
+
+.close-credits:active {
+	border-top: 1px solid #000000;
+	border-left: 1px solid #000000;
+	border-right: 1px solid #ffffff;
+	border-bottom: 1px solid #ffffff;
+}
+        `;
+        document.head.appendChild(styleElement);
+    };
+
+    const createModal = () => {
+        if (document.getElementById('creditsModal')) return;
+
+        const modal = document.createElement('div');
+        modal.id = 'creditsModal';
+        modal.className = 'credits-modal';
+
+        const creditsListHTML = creditsList.map(c => `<li>${c}</li>`).join('');
+
+        modal.innerHTML = `
+            <div class="credits-content">
+                <span class="close-credits">&times;</span>
+                <h3>CREDITS</h3>
+                <ul>${creditsListHTML}</ul>
+            </div>
+        `;
+
+        document.body.appendChild(modal);
+
+        // Close button
+        modal.querySelector('.close-credits').addEventListener('click', hideCredits);
+
+        // Clicking outside modal content closes it
+        modal.addEventListener('click', e => {
+            if (e.target === modal) hideCredits();
+        });
+    };
+
+    const showCredits = () => {
+        createModal();
+        const modal = document.getElementById('creditsModal');
+
+        modal.style.display = 'block';
+
+        // Trigger reflow to start transition
+        void modal.offsetWidth;
+
+        modal.classList.add('active');
+    };
+
+    const hideCredits = () => {
+        const modal = document.getElementById('creditsModal');
+        if (!modal) return;
+
+        modal.classList.remove('active');
+
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 120);
+    };
+
+    const setupKeyListener = () => {
+        document.addEventListener('keydown', event => {
+            if (event.key === 'Escape') hideCredits();
+        });
+    };
+
+    const init = () => {
+        injectCSS();
+        setupKeyListener();
+        window.showCredits = showCredits;
+    };
+
+    init();
+})();
 
 campaignTrail_temp.global_parameter_json = [
     {
