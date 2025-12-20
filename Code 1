@@ -4,7 +4,7 @@ campaignTrail_temp.election_json = [
         "pk": 9,
         "fields": {
             "year": 2000,
-            "summary": "<p>Three years ago, the United States appeared to be entering an unparalleled era of prosperity. Wages were up, stocks were up, the surplus was up, and confidence was up. As the nation enters its next presidential election, confidence in that prosperity has fallen to an all-time low.   </p><p> Following the impeachment of President Clinton, most would be forgiven for assuming the Senate would acquit him. Unfortunately for the ''Comeback Kid'', opposition is quickly rising from the vast majority of Republicans, and various Southern and institutionalist Democrats. Despite remaining extremely popular with the American public, he may soon be forced to trade the judgement of the Presidency for that of the Senate.   </p>",
+            "summary": "<p>Three years ago, the United States appeared to be entering an unparalleled era of prosperity. Wages were up, stocks were up, the surplus was up, and confidence was up. As the nation enters its next presidential election, confidence in that prosperity has fallen to an all-time low.   </p><p> Following the impeachment of President Clinton, most would be forgiven for assuming the Senate would acquit him. Unfortunately for the President, opposition is quickly rising from the vast majority of Republicans, and various Southern and institutionalist Democrats. Despite remaining extremely popular with the American public, he may soon be forced to trade the judgement of the Presidency for that of the Senate.   </p>",
             "image_url": "https://file.garden/aQva_Uf9IkUs-gI9/The-Impeachment-Trail/Code%201/Intro",
             "winning_electoral_vote_number": 270,
             "advisor_url": "https://www.jetsimon.com/public/static/images/rove-brazile.jpg",
@@ -22,17 +22,17 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 77,
         "fields": {
-            "first_name": "George W.",
-            "last_name": "Bush",
+            "first_name": "Bill",
+            "last_name": "Clinton",
             "election": 9,
-            "party": "Republican",
-            "state": "Texas",
+            "party": "Democrat",
+            "state": "Arkansas",
             "priority": 1,
-            "description": "<p>George W. Bush enters 2000 with the support of the Republican establishment and the name recognition of his father. He has governed Texas for five years and won bipartisan support in that state. He seeks to duplicate that formula on the national stage.</p><p>Bush has broad appeal and a united base, but lacks experience and gravitas in the eyes of some. Can he make the case that he will move beyond the partisanship of the Clinton years and bring \"compassionate conservatism\" to the nation?</p>",
+            "description": "<p>Anyone can grow up and become President of the United States — even Bill Clinton. It's a surprise he's gotten to where he is today. A run-of-the-mill and unspecial governor of Arkansas, all his life he's been waiting for the perfect opportunity to win the highest office in the land, and in 1992, he took it. With Bush's popularity collapsing and Perot siphoning off critical votes from him, he was able to win the election with relative ease. </p><p> Governing as a \"bipartisan\" moderate, he's built a coalition uniting coal workers in Appalachia and suburbanites in Westchester alike. With a strong economy, he was able to win re-election in 1996, and his approval rating has continued to rise steadily. Behind the scenes, however, he has skeletons in his closet he doesn't want anyone Congress nor the public to know about. Most Americans might like him, but he may have something to hide. </p>",
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 1,
-            "image_url": "https://www.jetsimon.com/public/static/images/george-w-bush-2000.jpg",
+            "image_url": "https://file.garden/aQva_Uf9IkUs-gI9/The-Impeachment-Trail/Code%201/Clinton-Code-1-Gif",
             "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>Confounding the predictions of many experts, you were able to turn the tables on Al Gore, in spite of the economy and Clinton's popularity.</p><p>On the political front, you can push for tax cuts to spur the economy and return the budget surplus to the American people. You might also pursue education and immigration reform, individual Social Security accounts, and new laws to defend the family and the sanctity of life.</p>",
             "electoral_loss_message": "<h3>Sorry! You have lost the 2000 election.</h3><p>Perhaps it was always a long-shot, with the Democrats in such a commanding position after eight years of Bill Clinton. In any case, at least you are still the Governor of Texas.</p><p>Expect Al Gore to unleash a new round of government programs and environmental regulations. You are still youngish, however. If the election was close this time, perhaps you can run again in 2004, or work on behalf your brother Jeb.</p>",
             "no_electoral_majority_message": "<h3>Wow! You have won in a squeaker.</h3><p>No candidate achieved a majority of the electoral votes, marking the first time this has happened since 1824. Fortunately for you, the majority of U.S. states have Republican controlled congressional delegations, and they will cast their votes accordingly.</p><p>Given the incredibly close nature of the election, you will surely be expected to govern as a moderate, conciliatory President. Right??</p>",
@@ -45,8 +45,8 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 78,
         "fields": {
-            "first_name": "Al",
-            "last_name": "Gore",
+            "first_name": "The",
+            "last_name": "Republicans",
             "election": 9,
             "party": "Democrat",
             "state": "Tennessee",
@@ -54,7 +54,7 @@ campaignTrail_temp.candidate_json = [
             "description": "<p>Al Gore enters the 2000 election as the Democratic candidate after eight years as Vice President under Bill Clinton.</p><p>Gore has a lot of options in his campaign. He can embrace the legacy of Clinton, for better or worse. Politically, he can run as a centrist, or move to the left and run as a more traditional liberal Democrat than Clinton did. The presence of the well-known Ralph Nader as a Green Party candidate complicates this decision. Gore is essentially campaigning on two fronts.</p>",
             "color_hex": "#0000FF",
             "secondary_color_hex": "#90C0FF",
-            "is_active": 1,
+            "is_active": 0,
             "image_url": "https://www.jetsimon.com/public/static/images/al-gore-2000.jpg",
             "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>Though it was perhaps expected, you could have easily faltered at a number of points. Credit to you for pulling through.</p><p>On the political front, you can continue the Clinton legacy and strengthen Social Security for generations to come. Perhaps you can succeed on health care where Clinton came up short? Or maybe you can create a future of renewable energy for America. Just be wary of a (George or Jeb?) Bush challenge in 2004.</p>",
             "electoral_loss_message": "<h3>Sorry! You have lost the 2000 election.</h3><p>Surely the second-guessing will be intense, but if things were close you could probably run again in 2004.</p><p>It seems that with George W. Bush and a Republican majority, the United States can expect some conservative policy-making over the next four years. Hopefully Bush comes through on his promise to govern in a bipartisan, conciliatory manner. A lot should depend on the margin of his victory, and whether it was large or small.</p>",
@@ -69,7 +69,7 @@ campaignTrail_temp.candidate_json = [
         "pk": 79,
         "fields": {
             "first_name": "Ralph",
-            "last_name": "Nader",
+            "last_name": "Greens",
             "election": 9,
             "party": "Green",
             "state": "Connecticut",
@@ -77,7 +77,7 @@ campaignTrail_temp.candidate_json = [
             "description": "<p>Ralph Nader enters the 2000 election as the Green candidate after years as an activist and consumer advocate.</p><p>After eight years of Bill Clinton, it is clear that the United States needs a true liberal alternative -- one that will fight for fair trade, universal health care, free college, and campaign finance reform. Nader's primary goal in this election is to win 5% of the popular vote, which will qualify the Green Party for federal matching funds in 2004.</p>",
             "color_hex": "#00C100",
             "secondary_color_hex": "#A1FFA1",
-            "is_active": 1,
+            "is_active": 0,
             "image_url": "https://www.jetsimon.com/public/static/images/ralph-nader-2000.jpg",
             "electoral_victory_message": "<h3>Congratulations! You have won the 2000 election.</h3><p>This was definitely not supposed to happen. Good luck!</p>",
             "electoral_loss_message": "<h3>As expected, you have lost the 2000 election.</h3><p>The legacy of this campaign depends on a couple of factors. First of all, did you receive 5% of the popular vote? If so, congratulations! You will enable the Green Party to run a vigorous campaign in 2004 and present a true choice to the American people. Also, the Democrats were a little peeved that you \"stole\" votes from them in this election. Hopefully that doesn't lead to a backlash.</p>",
@@ -92,7 +92,7 @@ campaignTrail_temp.candidate_json = [
         "pk": 80,
         "fields": {
             "first_name": "Pat",
-            "last_name": "Buchanan",
+            "last_name": "Reform",
             "election": 9,
             "party": "Reform",
             "state": "Virginia",
@@ -114,228 +114,21 @@ campaignTrail_temp.candidate_json = [
         "model": "campaign_trail.candidate",
         "pk": 81,
         "fields": {
-            "first_name": "Dick",
-            "last_name": "Cheney",
+            "first_name": "Al",
+            "last_name": "Gore",
             "election": 9,
-            "party": "Republican",
-            "state": "Wyoming",
+            "party": "Democrat",
+            "state": "Tennessee",
             "priority": 5,
             "description": "''",
             "color_hex": "#FF0000",
             "secondary_color_hex": "#FFA0A0",
             "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/dick-cheney-2000.jpg",
+            "image_url": "https://file.garden/aQva_Uf9IkUs-gI9/The-Impeachment-Trail/Code%201/Gore-Code-1-Gif",
             "electoral_victory_message": "''",
             "electoral_loss_message": "''",
             "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Dick Cheney is a seasoned operative of the Republican Party who has served as White House Chief of Staff, Minority Whip in Congress, Secretary of Defense, and as CEO of Halliburton. He would be a respected choice across the Republican spectrum, and would add experience and gravitas to the Republican ticket.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 82,
-        "fields": {
-            "first_name": "John",
-            "last_name": "Danforth",
-            "election": 9,
-            "party": "Republican",
-            "state": "Missouri",
-            "priority": 6,
-            "description": "''",
-            "color_hex": "#FF0000",
-            "secondary_color_hex": "#FFA0A0",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/john-danforth-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>John Danforth served four terms as Senator from Missouri. He has broad experience in government, and as a moderate Republican would reinforce Bush's claim to be a uniter. Danforth also has close relationships with conservative stalwarts such as Kit Bond, Clarence Thomas, and John Ashcroft, and would not arouse undue suspicion from the conservative wing of the party. Winning Missouri back would be a key piece of any Republican victory in 2000.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 83,
-        "fields": {
-            "first_name": "Tom",
-            "last_name": "Ridge",
-            "election": 9,
-            "party": "Republican",
-            "state": "Pennsylvania",
-            "priority": 7,
-            "description": "''",
-            "color_hex": "#FF0000",
-            "secondary_color_hex": "#FFA0A0",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/tom-ridge-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Tom Ridge is the popular Governor of a large swing state. Pennsylvania's 23 electoral votes would almost ensure a Bush victory if Ridge could deliver them. He has a reputation as an able administrator and has been very tough on crime. However, he has also been pro-choice for his entire career, and his selection as running mate could cause issues with the Republican base in other regions.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 84,
-        "fields": {
-            "first_name": "Colin",
-            "last_name": "Powell",
-            "election": 9,
-            "party": "Republican",
-            "state": "Virginia",
-            "priority": 8,
-            "description": "''",
-            "color_hex": "#FF0000",
-            "secondary_color_hex": "#FFA0A0",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/colin-powell-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Colin Powell is a moderate Republican and a key general from the Desert Storm campaign. He enjoys high personal popularity among the American electorate. He would be the first African-American to be a running mate for a major party. It will take some strong inducements to get Powell to run, however. He has repeatedly stated that he is not seeking the role, but perhaps you could persuade him by taking a moderate position on the social issues of the day.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 85,
-        "fields": {
-            "first_name": "Joe",
-            "last_name": "Lieberman",
-            "election": 9,
-            "party": "Democrat",
-            "state": "Connecticut",
-            "priority": 9,
-            "description": "''",
-            "color_hex": "#0000FF",
-            "secondary_color_hex": "#90C0FF",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/joe-lieberman-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Joe Lieberman is a moderate Democrat and Orthodox Jew who has served as a Senator from Connecticut. He would be the first Jewish candidate or running mate from a major party. He was also a prominent critic of Bill Clinton's missteps during his time in the White House. Geographically, Lieberman could help with Gore's vote total in the critical state of Florida.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 86,
-        "fields": {
-            "first_name": "Bob",
-            "last_name": "Graham",
-            "election": 9,
-            "party": "Democrat",
-            "state": "Florida",
-            "priority": 10,
-            "description": "''",
-            "color_hex": "#0000FF",
-            "secondary_color_hex": "#90C0FF",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/bob-graham-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Bob Graham is a Senator and former Governor from Florida. His popularity in that state could be crucial to a Democratic victory in 2000. He is fairly moderate and was one of Bill Clinton's top choices for running mate before Clinton went with Gore. His focus has been on the environment, education, and intelligence issues.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 87,
-        "fields": {
-            "first_name": "John",
-            "last_name": "Kerry",
-            "election": 9,
-            "party": "Democrat",
-            "state": "Massachusetts",
-            "priority": 11,
-            "description": "''",
-            "color_hex": "#0000FF",
-            "secondary_color_hex": "#90C0FF",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/john-kerry-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>John Kerry is a Senator from Massachusetts. He gained prominence in his youth as a Vietnam Veteran Against the War. He also won a Silver Star in that war. He is a solid liberal on the political spectrum. His home state is strongly Democratic, but his views may help the Democrats reduce the loss of support to Ralph Nader. He can also be helpful in New Hampshire.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 88,
-        "fields": {
-            "first_name": "Evan",
-            "last_name": "Bayh",
-            "election": 9,
-            "party": "Democrat",
-            "state": "Indiana",
-            "priority": 12,
-            "description": "''",
-            "color_hex": "#0000FF",
-            "secondary_color_hex": "#90C0FF",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/evan-bayh-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Evan Bayh is a Senator from Indiana and a former Governor. He is broadly popular in that state and is a leader of the moderate wing of the Democrats. This could help the Democrats compete in the Midwest and South, but it could also alienate the left-wing of the party and drive additional support to Ralph Nader's bid.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 89,
-        "fields": {
-            "first_name": "Winona",
-            "last_name": "LaDuke",
-            "election": 9,
-            "party": "Green",
-            "state": "Minnesota",
-            "priority": 13,
-            "description": "''",
-            "color_hex": "#00C100",
-            "secondary_color_hex": "#A1FFA1",
-            "is_active": 0,
-            "image_url": "https://www.jetsimon.com/public/static/images/winona-laduke-2000.jpg",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "<p>Winona LaDuke is a Native American activist of Ojibwe ancestry. She lives in Minnesota and has been active in attempts to regain land that once belonged to various American Indian tribes. She has written a book and started organizations in support of this issue.</p>",
-            "candidate_score": 0,
-            "running_mate": true
-        }
-    },
-    {
-        "model": "campaign_trail.candidate",
-        "pk": 90,
-        "fields": {
-            "first_name": "Ezola",
-            "last_name": "Foster",
-            "election": 9,
-            "party": "Reform",
-            "state": "California",
-            "priority": 14,
-            "description": "''",
-            "color_hex": "#FFFF00",
-            "secondary_color_hex": "#FFFFC0",
-            "is_active": 0,
-            "image_url": "''",
-            "electoral_victory_message": "''",
-            "electoral_loss_message": "''",
-            "no_electoral_majority_message": "''",
-            "description_as_running_mate": "''",
+            "description_as_running_mate": "<p>These past few years haven't been the easiest for the Vice President. Elected alongside the President in comfy mandates in 1992 and 1996, he clearly has his own ambitions for the highest office. He's had some successes over his tenure, but Clinton's looseness threatens to make it all meaningless. Americans believe he's just another Southern, Atari Democrat who's just tried to do what he believes is best for the country, but he knows he's more than that. </p><p> With the term wrapping up, he's already planning his own run for President, but if his superior falls to scandal or sin, he may not need to in the end. Regardless, he's not sure how much longer he can keep cleaning up his partner's messes. Unless things begin to change, he may soon be dragged into the muck of Clintonworld and swallowed whole.  </p>",
             "candidate_score": 0,
             "running_mate": true
         }
@@ -345,84 +138,13 @@ campaignTrail_temp.candidate_json = [
 campaignTrail_temp.running_mate_json = [
     {
         "model": "campaign_trail.running_mate",
-        "pk": 57,
-        "fields": {
-            "candidate": 80,
-            "running_mate": 90
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 56,
-        "fields": {
-            "candidate": 79,
-            "running_mate": 89
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
         "pk": 48,
         "fields": {
             "candidate": 77,
             "running_mate": 81
         }
     },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 52,
-        "fields": {
-            "candidate": 78,
-            "running_mate": 85
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 53,
-        "fields": {
-            "candidate": 78,
-            "running_mate": 86
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 49,
-        "fields": {
-            "candidate": 77,
-            "running_mate": 82
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 54,
-        "fields": {
-            "candidate": 78,
-            "running_mate": 87
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 55,
-        "fields": {
-            "candidate": 78,
-            "running_mate": 88
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 50,
-        "fields": {
-            "candidate": 77,
-            "running_mate": 83
-        }
-    },
-    {
-        "model": "campaign_trail.running_mate",
-        "pk": 51,
-        "fields": {
-            "candidate": 77,
-            "running_mate": 84
-        }
-    }
+ 
 ]
 
 campaignTrail_temp.credits = "Dan Bryan"
